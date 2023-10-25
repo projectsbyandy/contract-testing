@@ -1,2 +1,2 @@
-# contracttesting
+# contract-testing
 Contract testing playground
