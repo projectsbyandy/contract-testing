@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace Producer_EmulsiveFilm.Models;
+namespace Consumer_PhotographyStore.External.Models.FilmResponse;
 
 public class Manufacturer
 {
