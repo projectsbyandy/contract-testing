@@ -1,5 +1,4 @@
-using Producer_EmulsiveFilm.Models;
-using Producer_EmulsiveFilm.Models.Response;
+using Producer_EmulsiveFilm.Models.EmulsiveFilm.Response;
 
 namespace Producer_EmulsiveFilm.Repository;
 

@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Producer_EmulsiveFilm.Models;
-using Producer_EmulsiveFilm.Models.Response;
+using Producer_EmulsiveFilm.Models.EmulsiveFilm.Response;
 using Producer_EmulsiveFilm.Repository;
+using ILogger = Serilog.ILogger;
 
 namespace Producer_EmulsiveFilm.Controllers;
 
@@ -9,10 +10,10 @@ namespace Producer_EmulsiveFilm.Controllers;
 [Route("[controller]")]
 public class EmulsiveFilmController : ControllerBase
 {
-    private readonly ILogger<EmulsiveFilmController> _logger;
+    private readonly ILogger _logger;
     private readonly IFilmStore _filmStore;
     
-    public EmulsiveFilmController(ILogger<EmulsiveFilmController> logger, IFilmStore filmStore)
+    public EmulsiveFilmController(ILogger logger, IFilmStore filmStore)
     {
         _logger = logger;
         _filmStore = filmStore;
@@ -22,7 +23,7 @@ public class EmulsiveFilmController : ControllerBase
     public IEnumerable<Film> GetFilm(FilmType filmType)
     {
         var locatedItems =_filmStore.GetAll().Where(f => f.FilmType == filmType);
-        _logger.LogInformation("Located film {@Film}", locatedItems);
+        _logger.Information("Located film {@Film}", locatedItems);
         
         return locatedItems;
     }
@@ -31,7 +32,7 @@ public class EmulsiveFilmController : ControllerBase
     public IEnumerable<Film> GetAllFilm()
     {
         var films = _filmStore.GetAll();
-        _logger.LogInformation("Located film {@Film}", films);
+        _logger.Information("Located film {@Film}", films);
 
         return films;
     }

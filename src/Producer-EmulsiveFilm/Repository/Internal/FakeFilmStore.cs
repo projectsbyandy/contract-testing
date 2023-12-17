@@ -1,7 +1,7 @@
 using Producer_EmulsiveFilm.Models;
-using Producer_EmulsiveFilm.Models.Response;
+using Producer_EmulsiveFilm.Models.EmulsiveFilm.Response;
 
-namespace Producer_EmulsiveFilm.Repository;
+namespace Producer_EmulsiveFilm.Repository.Internal;
 
 public class FakeFilmStore : IFilmStore
 {

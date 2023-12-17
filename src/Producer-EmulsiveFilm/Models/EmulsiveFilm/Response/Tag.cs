@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace Producer_EmulsiveFilm.Models.Response;
+namespace Producer_EmulsiveFilm.Models.EmulsiveFilm.Response;
 
 public class Tag
 {
