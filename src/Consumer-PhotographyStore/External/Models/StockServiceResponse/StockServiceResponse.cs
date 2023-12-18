@@ -1,5 +1,5 @@
 using System.Net;
-using Consumer_PhotographyStore.External.Models.FilmResponse;
+using Consumer_PhotographyStore.External.Models.EmulsiveFilm;
 
 namespace Consumer_PhotographyStore.External.Models.StockServiceResponse;
 

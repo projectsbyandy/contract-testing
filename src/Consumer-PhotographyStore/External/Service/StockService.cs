@@ -1,5 +1,6 @@
-using Consumer_PhotographyStore.External.Models;
-using Consumer_PhotographyStore.External.Models.StockServiceResponse;
+using System.Text.Json;
+using Ardalis.GuardClauses;
+using Consumer_PhotographyStore.External.Models.Stock;
 
 namespace Consumer_PhotographyStore.External.Service;
 
@@ -12,13 +13,15 @@ public class StockService : IStockService
         _httpClient = httpClient;
     }
 
-    public StockServiceResponse GetAsync(FilmType filmType)
+    public async Task<FilmStock> GetStockForAsync(string filmName)
     {
-        throw new NotImplementedException();
-    }
+        var response = await _httpClient.GetAsync("stock");
 
-    public StockServiceResponse GetAllAsync()
-    {
-        throw new NotImplementedException();
+        response.EnsureSuccessStatusCode();
+        
+        var stockConverted = await response.Content.ReadAsStreamAsync();
+        Guard.Against.Null(stockConverted);
+        
+        return JsonSerializer.Deserialize<FilmStock>(stockConverted);
     }
 }

@@ -1,10 +1,8 @@
-using Consumer_PhotographyStore.External.Models;
-using Consumer_PhotographyStore.External.Models.StockServiceResponse;
+using Consumer_PhotographyStore.External.Models.Stock;
 
 namespace Consumer_PhotographyStore.External.Service;
 
 public interface IStockService
 {
-    public StockServiceResponse GetAsync(FilmType filmType);
-    public StockServiceResponse GetAllAsync();
+    public Task<FilmStock> GetStockForAsync(string filmName);
 }
