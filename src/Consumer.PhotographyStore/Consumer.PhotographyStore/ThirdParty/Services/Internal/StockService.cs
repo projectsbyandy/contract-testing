@@ -2,7 +2,7 @@ using System.Text.Json;
 using Ardalis.GuardClauses;
 using Consumer.PhotographyStore.ThirdParty.Models.Stock;
 
-namespace Consumer.PhotographyStore.ThirdParty.Internal;
+namespace Consumer.PhotographyStore.ThirdParty.Services.Internal;
 
 public class StockService : IStockService
 {

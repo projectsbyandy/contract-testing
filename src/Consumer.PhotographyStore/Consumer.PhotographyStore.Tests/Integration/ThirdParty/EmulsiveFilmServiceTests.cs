@@ -1,4 +1,4 @@
-using Consumer.PhotographyStore.ThirdParty.Internal;
+using Consumer.PhotographyStore.ThirdParty.Services.Internal;
 using FluentAssertions;
 
 namespace Consumer.PhotographyStore.Tests.Integration.ThirdParty;
@@ -15,9 +15,11 @@ public class EmulsiveFilmServiceTests
         });
         
         // When
-        var films = await emulsiveFilmService.GetAllFilmAsync();
+        var allFilm = await emulsiveFilmService.GetAllFilmAsync();
         
         // Then
+        var films = allFilm.ToList();
         films.Should().HaveCountGreaterThan(0);
+        films.FirstOrDefault()?.Name.Should().NotBeEmpty();
     }
 }

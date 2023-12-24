@@ -1,6 +1,6 @@
 using Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 
-namespace Consumer.PhotographyStore.ThirdParty;
+namespace Consumer.PhotographyStore.ThirdParty.Services;
 
 public interface IEmulsiveFactoryService
 {

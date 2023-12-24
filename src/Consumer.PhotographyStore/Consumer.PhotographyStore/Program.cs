@@ -1,14 +1,15 @@
-using Consumer.PhotographyStore.ThirdParty;
-using Consumer.PhotographyStore.ThirdParty.Internal;
+using Consumer.PhotographyStore.Models;
+using Consumer.PhotographyStore.ThirdParty.Services;
+using Consumer.PhotographyStore.ThirdParty.Services.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Load Config
+var test = builder.Configuration.GetSection("PhotographyStoreConfig");
 
 // Add custom services
 builder.Services.AddHttpClient<IStockService, StockService>(c =>
@@ -22,7 +23,6 @@ builder.Services.AddHttpClient<IEmulsiveFactoryService, EmulsiveFactoryService>(
 });
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -1,6 +1,6 @@
 using Consumer.PhotographyStore.ThirdParty.Models.Stock;
 
-namespace Consumer.PhotographyStore.ThirdParty;
+namespace Consumer.PhotographyStore.ThirdParty.Services;
 
 public interface IStockService
 {

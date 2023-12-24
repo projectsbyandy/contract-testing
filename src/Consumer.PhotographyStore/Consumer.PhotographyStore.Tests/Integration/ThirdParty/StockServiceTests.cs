@@ -1,5 +1,5 @@
 using System.Net;
-using Consumer.PhotographyStore.ThirdParty.Internal;
+using Consumer.PhotographyStore.ThirdParty.Services.Internal;
 using FluentAssertions;
 
 namespace Consumer.PhotographyStore.Tests.Integration.ThirdParty;

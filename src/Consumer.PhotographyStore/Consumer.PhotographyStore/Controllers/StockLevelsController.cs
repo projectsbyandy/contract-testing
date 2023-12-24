@@ -1,8 +1,9 @@
 using System.Net;
 using Ardalis.GuardClauses;
-using Consumer.PhotographyStore.ThirdParty;
+using Consumer.PhotographyStore.Models;
 using Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 using Consumer.PhotographyStore.ThirdParty.Models.Stock;
+using Consumer.PhotographyStore.ThirdParty.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Consumer.PhotographyStore.Controllers;
@@ -13,13 +14,15 @@ public class StockLevelsController : ControllerBase
 {
     private readonly IStockService _stockService;
     private readonly IEmulsiveFactoryService _emulsiveFactoryService;
+    private readonly PhotographyStoreConfig _photographyStoreConfig;
     
-    public readonly string[] FilmManufacturersWeStock = {"Kodak", "Cinestill","adadadada"};
+    public readonly string[] FilmManufacturersWeStock = {"Kodak", "Cinestill"};
     
-    public StockLevelsController(IStockService stockService, IEmulsiveFactoryService emulsiveFactoryService)
+    public StockLevelsController(IStockService stockService, IEmulsiveFactoryService emulsiveFactoryService, PhotographyStoreConfig photographyStoreConfig)
     {
         _stockService = stockService;
         _emulsiveFactoryService = emulsiveFactoryService;
+        _photographyStoreConfig = photographyStoreConfig;
     }
 
     [HttpGet]
