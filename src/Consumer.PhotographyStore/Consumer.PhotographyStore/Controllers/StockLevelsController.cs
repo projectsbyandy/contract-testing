@@ -16,8 +16,6 @@ public class StockLevelsController : ControllerBase
     private readonly IEmulsiveFactoryService _emulsiveFactoryService;
     private readonly PhotographyStoreConfig _photographyStoreConfig;
     
-    public readonly string[] FilmManufacturersWeStock = {"Kodak", "Cinestill"};
-    
     public StockLevelsController(IStockService stockService, IEmulsiveFactoryService emulsiveFactoryService, PhotographyStoreConfig photographyStoreConfig)
     {
         _stockService = stockService;
@@ -32,7 +30,7 @@ public class StockLevelsController : ControllerBase
 
         var allFilm = await GetFilmFromFactoryAsync();
 
-        var supportedFilms = allFilm.Where(film => FilmManufacturersWeStock.Contains(film.Manufacturer?.Name));
+        var supportedFilms = allFilm.Where(film => _photographyStoreConfig.FilmManufacturers.Contains(Guard.Against.Null(film.Manufacturer?.Name)));
         
         supportedFilms.ToList().ForEach(supportedFilm =>
         {

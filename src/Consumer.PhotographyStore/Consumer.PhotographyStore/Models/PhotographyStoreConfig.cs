@@ -6,4 +6,7 @@ public class PhotographyStoreConfig
 {
     [JsonPropertyName("FilmManufacturers")]
     public IList<string> FilmManufacturers { get; set; } = new List<string>();
+
+    [JsonPropertyName("EmulsiveFactoryServer")]
+    public string EmulsiveFactoryServer { get; set; }
 }

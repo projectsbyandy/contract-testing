@@ -1,3 +1,4 @@
+using Ardalis.GuardClauses;
 using Consumer.PhotographyStore.Models;
 using Consumer.PhotographyStore.ThirdParty.Services;
 using Consumer.PhotographyStore.ThirdParty.Services.Internal;
@@ -9,17 +10,20 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Load Config
-var test = builder.Configuration.GetSection("PhotographyStoreConfig");
+var photographyStoreConfig =
+    Guard.Against.Null(builder.Configuration.GetSection("PhotographyStoreConfig").Get<PhotographyStoreConfig>());
+
+builder.Services.AddSingleton(photographyStoreConfig);
 
 // Add custom services
 builder.Services.AddHttpClient<IStockService, StockService>(c =>
 {
-    c.BaseAddress = new Uri("https://localhost:7194");
+    c.BaseAddress = new Uri(photographyStoreConfig.EmulsiveFactoryServer);
 });
 
 builder.Services.AddHttpClient<IEmulsiveFactoryService, EmulsiveFactoryService>(c =>
 {
-    c.BaseAddress = new Uri("https://localhost:7194");
+    c.BaseAddress = new Uri(photographyStoreConfig.EmulsiveFactoryServer);
 });
 var app = builder.Build();
 
