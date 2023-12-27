@@ -30,7 +30,7 @@ public class StockLevelsController : ControllerBase
 
         var allFilm = await GetFilmFromFactoryAsync();
 
-        var supportedFilms = allFilm.Where(film => _photographyStoreConfig.FilmManufacturers.Contains(Guard.Against.Null(film.Manufacturer?.Name)));
+        var supportedFilms = allFilm.Where(film => Guard.Against.Null(_photographyStoreConfig.FilmManufacturers).Contains(Guard.Against.Null(film.Manufacturer?.Name)));
         
         supportedFilms.ToList().ForEach(supportedFilm =>
         {

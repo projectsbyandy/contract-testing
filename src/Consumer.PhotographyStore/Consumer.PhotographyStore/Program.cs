@@ -16,14 +16,16 @@ var photographyStoreConfig =
 builder.Services.AddSingleton(photographyStoreConfig);
 
 // Add custom services
+
+var emulsiveFactoryServer = Guard.Against.Null(photographyStoreConfig.EmulsiveFactoryServer);
 builder.Services.AddHttpClient<IStockService, StockService>(c =>
 {
-    c.BaseAddress = new Uri(photographyStoreConfig.EmulsiveFactoryServer);
+    c.BaseAddress = new Uri(emulsiveFactoryServer);
 });
 
 builder.Services.AddHttpClient<IEmulsiveFactoryService, EmulsiveFactoryService>(c =>
 {
-    c.BaseAddress = new Uri(photographyStoreConfig.EmulsiveFactoryServer);
+    c.BaseAddress = new Uri(emulsiveFactoryServer);
 });
 var app = builder.Build();
 

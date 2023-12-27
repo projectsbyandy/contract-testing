@@ -1,0 +1,61 @@
+{
+  "consumer": {
+    "name": "PhotographyShop"
+  },
+  "interactions": [
+    {
+      "description": "An opinion service request",
+      "pending": false,
+      "providerStates": [
+        {
+          "name": "an Stock request is made with a film name"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/Stock/Portra400"
+      },
+      "response": {
+        "body": {
+          "content": {
+            "httpStatusCode": 200
+          },
+          "contentType": "application/json",
+          "encoded": false
+        },
+        "headers": {
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ]
+        },
+        "matchingRules": {
+          "body": {
+            "$.httpStatusCode": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      },
+      "type": "Synchronous/HTTP"
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.5",
+      "models": "1.1.2"
+    },
+    "pactSpecification": {
+      "version": "4.0"
+    }
+  },
+  "provider": {
+    "name": "EmulsiveFactory StockApi"
+  }
+}

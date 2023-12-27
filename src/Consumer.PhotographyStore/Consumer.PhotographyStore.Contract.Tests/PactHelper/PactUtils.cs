@@ -6,9 +6,9 @@ namespace Consumer.PhotographyStore.Contract.Tests.PactHelper;
 
 public class PactUtils
 {
-    public static void ClearContractFolder(string pactContractPath)
+    public static void ClearContractFolder(ContractStrategy pactContractPath)
     {
-        var directoryInfo = new DirectoryInfo(pactContractPath);
+        var directoryInfo = new DirectoryInfo(ContractsLocation(pactContractPath));
 
         foreach (var file in directoryInfo.GetFiles())
         {
