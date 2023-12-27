@@ -16,11 +16,13 @@ public class StockServiceTests
         });
         
         // When
-        var filmStockDetails = await stockService.GetStockForAsync("Portra400");
+        var filmStockDetails = await stockService.GetStockForAsync("CT800");
         
         // Then
         filmStockDetails.FilmStock?.Stock?.InStock.Should().BeGreaterOrEqualTo(0);
         filmStockDetails.FilmStock?.Stock?.OnOrder.Should().BeGreaterOrEqualTo(0);
+        filmStockDetails.FilmStock?.Film?.Name.Should().Be("CT800");
+        filmStockDetails.FilmStock?.Film?.Manufacturer?.Name.Should().Be("Cinestill");
     }
     
     [Test]

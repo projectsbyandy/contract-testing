@@ -7,10 +7,10 @@ namespace Consumer.PhotographyStore.ThirdParty.Models.Stock;
 public class FilmStock
 {
     [Required]
-    [JsonPropertyName("Film")]
+    [JsonPropertyName("film")]
     public Film? Film { get; set; }
     
     [Required]
-    [JsonPropertyName("Stock")]
+    [JsonPropertyName("stock")]
     public Stock? Stock { get; set; }
 }

@@ -6,21 +6,21 @@ namespace Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 public class Film
 {
     [Required]
-    [JsonPropertyName("Name")]
+    [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    [JsonPropertyName("FilmType")]
+    [JsonPropertyName("filmType")]
     public FilmType FilmType { get; set; }
     
-    [JsonPropertyName("Id")]
+    [JsonPropertyName("id")]
     public Guid Id { get; set; }
     
-    [JsonPropertyName("Manufacturer")]
+    [JsonPropertyName("manufacturer")]
     public Manufacturer? Manufacturer { get; set; }
     
-    [JsonPropertyName("Contacts")]
+    [JsonPropertyName("contacts")]
     public IList<Person>? Contacts { get; set; }
     
-    [JsonPropertyName("Tags")]
+    [JsonPropertyName("tags")]
     public IList<Tag>? Tags { get; set; }
 }

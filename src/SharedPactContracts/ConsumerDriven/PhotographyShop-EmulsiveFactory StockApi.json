@@ -18,6 +18,16 @@
       "response": {
         "body": {
           "content": {
+            "filmStock": {
+              "film": {
+                "filmType": 2,
+                "name": "Fuji400H"
+              },
+              "stock": {
+                "inStock": 100,
+                "onOrder": 200
+              }
+            },
             "httpStatusCode": 200
           },
           "contentType": "application/json",
@@ -30,6 +40,38 @@
         },
         "matchingRules": {
           "body": {
+            "$.filmStock.film.filmType": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.filmStock.film.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.filmStock.stock.inStock": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ]
+            },
+            "$.filmStock.stock.onOrder": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "number"
+                }
+              ]
+            },
             "$.httpStatusCode": {
               "combine": "AND",
               "matchers": [

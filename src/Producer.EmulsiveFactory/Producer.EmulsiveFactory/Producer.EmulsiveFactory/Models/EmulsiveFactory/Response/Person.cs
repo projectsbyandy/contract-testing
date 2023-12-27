@@ -4,12 +4,12 @@ namespace Producer.EmulsiveFactory.Models.EmulsiveFactory.Response;
 
 public class Person
 {
-    [JsonPropertyName("Name")]
+    [JsonPropertyName("name")]
     public string? Name { get; set; }
     
-    [JsonPropertyName("Email")]
+    [JsonPropertyName("email")]
     public string? Email { get; set; }
     
-    [JsonPropertyName("Location")]
+    [JsonPropertyName("location")]
     public string? Location { get; set; }
 }

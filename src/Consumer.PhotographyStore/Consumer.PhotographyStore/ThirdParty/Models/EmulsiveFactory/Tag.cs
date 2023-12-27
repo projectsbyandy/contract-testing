@@ -4,6 +4,6 @@ namespace Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 
 public class Tag
 {
-    [JsonPropertyName("Name")]
+    [JsonPropertyName("name")]
     public string? Name { get; set; }
 }

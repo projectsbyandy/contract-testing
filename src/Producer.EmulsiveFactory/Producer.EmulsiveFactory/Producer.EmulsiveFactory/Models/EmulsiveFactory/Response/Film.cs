@@ -6,16 +6,16 @@ namespace Producer.EmulsiveFactory.Models.EmulsiveFactory.Response;
 public class Film
 {
     [Required]
-    [JsonPropertyName("Name")]
+    [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    [JsonPropertyName("FilmType")]
+    [JsonPropertyName("filmType")]
     public FilmType FilmType { get; set; }
     
-    [JsonPropertyName("Id")]
+    [JsonPropertyName("id")]
     public Guid Id { get; set; }
     
-    [JsonPropertyName("Manufacturer")]
+    [JsonPropertyName("manufacturer")]
     public Manufacturer? Manufacturer { get; set; }
     
     [JsonPropertyName("Contacts")]

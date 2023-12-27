@@ -4,9 +4,9 @@ namespace Consumer.PhotographyStore.ThirdParty.Models.Stock;
 
 public class Stock
 {
-    [JsonPropertyName("InStock")]
+    [JsonPropertyName("inStock")]
     public int InStock { get; set; }
     
-    [JsonPropertyName("OnOrder")]
+    [JsonPropertyName("onOrder")]
     public int OnOrder { get; set; }
 }

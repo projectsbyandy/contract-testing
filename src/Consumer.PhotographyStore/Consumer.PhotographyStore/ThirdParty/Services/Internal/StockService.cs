@@ -1,6 +1,5 @@
 using System.Text.Json;
 using Ardalis.GuardClauses;
-using Consumer.PhotographyStore.ThirdParty.Models.Stock;
 
 namespace Consumer.PhotographyStore.ThirdParty.Services.Internal;
 
@@ -19,13 +18,9 @@ public class StockService : IStockService
 
         if (response.IsSuccessStatusCode)
         {
-            var stockConverted = await response.Content.ReadAsStreamAsync();
-            Guard.Against.Null(stockConverted);
+            var stockConverted = await response.Content.ReadAsStringAsync();
 
-            return new StockServiceResponse(response.StatusCode)
-            {
-                FilmStock = JsonSerializer.Deserialize<FilmStock>(stockConverted)
-            };
+            return Guard.Against.Null(JsonSerializer.Deserialize<StockServiceResponse>(stockConverted));
         }
 
         return new StockServiceResponse(response.StatusCode);

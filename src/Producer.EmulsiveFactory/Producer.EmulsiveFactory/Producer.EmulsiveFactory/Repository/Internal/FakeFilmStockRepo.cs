@@ -1,3 +1,4 @@
+using System.Net;
 using Producer.EmulsiveFactory.Models.Stock.Response;
 
 namespace Producer.EmulsiveFactory.Repository.Internal;
@@ -11,20 +12,23 @@ public class FakeFilmStockRepo : IFilmStockRepo
         _filmStore = filmStore;
     }
 
-    public FilmStock? GetStockFor(string filmName)
+    public StockServiceResponse? GetStockFor(string filmName)
     {
         var random = new Random();
         var film = _filmStore.GetAll().FirstOrDefault(film => film.Name!.Equals(filmName, StringComparison.InvariantCultureIgnoreCase));
 
         if (film is null) return null;
         
-        return new FilmStock()
+        return new StockServiceResponse(HttpStatusCode.OK)
         {
-            Film = film,
-            Stock = new Stock()
+            FilmStock = new()
             {
-                OnOrder = random.Next(10),
-                InStock = random.Next(1000)
+                Film = film,
+                Stock = new Stock()
+                {
+                    OnOrder = random.Next(10),
+                    InStock = random.Next(1000)
+                }
             }
         };
     }

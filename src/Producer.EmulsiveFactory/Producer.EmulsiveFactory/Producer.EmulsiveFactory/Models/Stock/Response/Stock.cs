@@ -4,9 +4,9 @@ namespace Producer.EmulsiveFactory.Models.Stock.Response;
 
 public class Stock
 {
-    [JsonPropertyName("InStock")]
+    [JsonPropertyName("inStock")]
     public int InStock { get; set; }
     
-    [JsonPropertyName("OnOrder")]
+    [JsonPropertyName("onOrder")]
     public int OnOrder { get; set; }
 }

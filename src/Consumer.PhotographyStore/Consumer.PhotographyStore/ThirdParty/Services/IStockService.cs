@@ -1,4 +1,4 @@
-using Consumer.PhotographyStore.ThirdParty.Models.Stock;
+using Consumer.PhotographyStore.ThirdParty.Services.Internal;
 
 namespace Consumer.PhotographyStore.ThirdParty.Services;
 

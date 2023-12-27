@@ -6,9 +6,9 @@ namespace Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 public class Manufacturer
 {
     [Required]
-    [JsonPropertyName("Name")]
+    [JsonPropertyName("name")]
     public string? Name { get; set; }
     
-    [JsonPropertyName("Location")]
+    [JsonPropertyName("location")]
     public string? Location { get; set; }
 }

@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Consumer.PhotographyStore.Contract.Tests.Models;
 using Consumer.PhotographyStore.Contract.Tests.PactHelper;
+using Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 using Consumer.PhotographyStore.ThirdParty.Services.Internal;
 using FluentAssertions;
 using NUnit.Framework;
@@ -41,7 +42,20 @@ public class StockServiceContractTests
                 .WithHeader("Content-Type", "application/json; charset=utf-8")
                 .WithJsonBody(new
                 {
-                    httpStatusCode = Match.Type(200)
+                    httpStatusCode = Match.Type(200),
+                    filmStock = new
+                    {
+                        film = new 
+                        {
+                            name = Match.Type("Fuji400H"),
+                            filmType = Match.Type(FilmType.ThirtyFive)
+                        },
+                        stock = new
+                        {
+                            inStock = Match.Number(100),
+                            onOrder = Match.Number(200)
+                        }
+                    }
                 });
         
         await _pactBuilder?.VerifyAsync(async ctx =>
@@ -56,6 +70,9 @@ public class StockServiceContractTests
 
             // Then (NOTE we are verifying the mock data, these checks have no bearing on the data inside the generated Pact
             response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
+            response.FilmStock?.Film?.Name.Should().Be("Fuji400H");
+            response.FilmStock?.Stock?.InStock.Should().Be(100);
+            response.FilmStock?.Stock?.OnOrder.Should().Be(200);
         })!;
     }
 }
