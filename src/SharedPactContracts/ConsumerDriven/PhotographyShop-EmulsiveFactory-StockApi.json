@@ -98,6 +98,6 @@
     }
   },
   "provider": {
-    "name": "EmulsiveFactory StockApi"
+    "name": "EmulsiveFactory-StockApi"
   }
 }

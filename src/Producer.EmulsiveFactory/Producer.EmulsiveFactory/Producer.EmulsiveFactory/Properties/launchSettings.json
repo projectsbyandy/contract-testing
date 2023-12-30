@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Producer_EmulsiveFactory": {
+    "Producer.EmulsiveFactory": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

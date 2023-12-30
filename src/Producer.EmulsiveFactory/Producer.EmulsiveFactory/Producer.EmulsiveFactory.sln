@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer.EmulsiveFactory", "Producer.EmulsiveFactory\Producer.EmulsiveFactory.csproj", "{2AF49DA1-A19A-48C1-A9A3-8870E447085C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{E13B94B9-402A-43A0-BC21-8EDC17B73FF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8AD0E514-4662-4DEB-BA84-C18AFA70439A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Producer.EmulsiveFactory.Contract.Tests", "Producer.EmulsiveFactory.Contract.Tests\Producer.EmulsiveFactory.Contract.Tests.csproj", "{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,13 @@ Global
 		{2AF49DA1-A19A-48C1-A9A3-8870E447085C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AF49DA1-A19A-48C1-A9A3-8870E447085C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AF49DA1-A19A-48C1-A9A3-8870E447085C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2AF49DA1-A19A-48C1-A9A3-8870E447085C} = {E13B94B9-402A-43A0-BC21-8EDC17B73FF6}
+		{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5} = {8AD0E514-4662-4DEB-BA84-C18AFA70439A}
 	EndGlobalSection
 EndGlobal

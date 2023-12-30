@@ -20,7 +20,7 @@ public class StockServiceContractTests
     [SetUp]
     public void Setup()
     {
-        var pact = Pact.V4("PhotographyShop", "EmulsiveFactory StockApi", new PactConfig()
+        var pact = Pact.V4("PhotographyShop", "EmulsiveFactory-StockApi", new PactConfig()
         {
             PactDir = PactUtils.ContractsLocation(ContractStrategy.Consumer)
         });
