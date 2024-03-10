@@ -5,9 +5,9 @@ using Producer.EmulsiveFactory.Contract.Tests.Models;
 
 namespace Producer.EmulsiveFactory.Contract.Tests.ConsumerDriven;
 
-public class PhotographyStoreSockTests : StockServiceFixture
+public class PhotographyStoreStockTests : StockServiceFixture
 {
-    [Test]
+    [Test(Description = "Consumer Driven Contract Test")]
     public void Verify_Alignment_With_Consumer_Opinion_Service_Contract()
     {
         // Given
