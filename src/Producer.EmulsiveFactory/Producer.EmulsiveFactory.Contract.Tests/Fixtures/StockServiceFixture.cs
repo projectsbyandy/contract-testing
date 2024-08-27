@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 
 namespace Producer.EmulsiveFactory.Contract.Tests.Fixtures;
@@ -13,16 +13,28 @@ public class StockServiceFixture : IDisposable
     public void SetupStockServiceFixture()
     {
         ServiceUri = new Uri("https://localhost:7194");
-        _server = Host
-            .CreateDefaultBuilder()
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseUrls(ServiceUri.ToString());
-                webBuilder.UseStartup<Startup>();
-            })
-            .Build();
+
+        var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
+        {
+            ApplicationName = "Producer.EmulsiveFactory"
+        });
         
-        _server.Start();
+        AppSetup.ConfigureBuilder(builder);
+        
+        var server = builder.Build();
+        
+        AppSetup.ConfigureApp(server);
+        
+        server.Urls.Add(ServiceUri.ToString());
+        server.Start();
+        
+        _server = server;
+    }
+
+    [OneTimeTearDown]
+    public void TearDownApiFixture()
+    {
+        Dispose();
     }
     
     public void Dispose()
