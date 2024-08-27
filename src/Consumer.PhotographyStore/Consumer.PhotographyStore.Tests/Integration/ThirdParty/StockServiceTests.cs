@@ -4,6 +4,7 @@ using FluentAssertions;
 
 namespace Consumer.PhotographyStore.Tests.Integration.ThirdParty;
 
+// NOTE - Requires Producer to be running
 public class StockServiceTests
 {
     [Test]
