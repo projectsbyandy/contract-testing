@@ -74,9 +74,6 @@ describe('Stock service test', () => {
             let stockService = new StockService(mockserver.url);
             let stock = await stockService.getStock("CT800");
             expect(stock).toStrictEqual(EMULSIVE_FILM_RESPONSE);
-            // expect(stock.httpStatusCode).toBe(200);
-            // expect(stock.filmStock.film.name).toBe("CT800");
-            // expect(stock.filmStock.film.contacts?.find(person => person.name == "Andy")?.location).toBe("Italy");
         });
     })
 });
