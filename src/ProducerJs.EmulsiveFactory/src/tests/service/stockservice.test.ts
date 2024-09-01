@@ -5,7 +5,7 @@ describe('Stock Service Tests', () => {
       let stockService: StockService;
       
       beforeAll(() =>
-        stockService = new StockService("https://localhost:7194/")
+        stockService = new StockService("https://localhost:7194")
       );
   
       it('will return data for a valid film', async () => {

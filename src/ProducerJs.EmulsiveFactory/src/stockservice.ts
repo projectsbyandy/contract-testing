@@ -2,8 +2,7 @@ import { StockServiceResponse } from "./models/stockServiceResponse";
 import https from 'https';
 import axios from 'axios'
 
-//process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
+// For testing, generate certificate for prod use
 const agent = new https.Agent({
   rejectUnauthorized: false,
 });
@@ -15,13 +14,9 @@ export class StockService {
         this.baseUrl = baseUrl;
     }
 
-    // public get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
-    //     return this.axiosInstance.get<T>(url, config).then((response) => response.data);
-    //   }
-
     async getStock(filmName: string): Promise<StockServiceResponse> {
         try {
-          const response = await axios.get<StockServiceResponse>(`${this.baseUrl}Stock/${filmName}`, { httpsAgent: agent });
+          const response = await axios.get<StockServiceResponse>(`${this.baseUrl}/Stock/${filmName}`, { httpsAgent: agent });
           const stockServiceResponse = response.data;
 
           console.log(stockServiceResponse);

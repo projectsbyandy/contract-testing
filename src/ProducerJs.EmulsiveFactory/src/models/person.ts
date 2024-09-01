@@ -1,3 +1,5 @@
 export interface Person {
-    name: string
+    name: string,
+    email: string,
+    location: string
 }

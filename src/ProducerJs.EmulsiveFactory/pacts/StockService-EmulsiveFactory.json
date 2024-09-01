@@ -1,0 +1,78 @@
+{
+  "consumer": {
+    "name": "StockService"
+  },
+  "interactions": [
+    {
+      "description": "a request for a user",
+      "providerStates": [
+        {
+          "name": "CT800 film exists"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/Stock/CT800"
+      },
+      "response": {
+        "body": {
+          "filmStock": {
+            "film": {
+              "contacts": [
+                {
+                  "email": "Andy@test.com",
+                  "location": "Italy",
+                  "name": "Andy"
+                },
+                {
+                  "email": "Jane@test.com",
+                  "location": "Dortmand",
+                  "name": "Jane"
+                }
+              ],
+              "filmType": 0,
+              "id": "91ed96c5-9672-4988-aee8-34ec14eb89a6",
+              "manufacturer": {
+                "location": "Germany",
+                "name": "Cinestill"
+              },
+              "name": "CT800",
+              "tags": [
+                {
+                  "name": "Neon"
+                },
+                {
+                  "name": "Night"
+                }
+              ]
+            },
+            "stock": {
+              "inStock": 607,
+              "onOrder": 9
+            }
+          },
+          "httpStatusCode": 200
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-js": {
+      "version": "13.1.2"
+    },
+    "pactRust": {
+      "ffi": "0.4.22",
+      "models": "1.2.3"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "EmulsiveFactory"
+  }
+}
