@@ -1,8 +1,7 @@
 import path from "path";
 import { PactV3, MatchersV3, SpecificationVersion, } from "@pact-foundation/pact";
 import { StockService } from '../../stockservice';
-
-const { like, atLeastOneLike, string, number } = MatchersV3
+const { eachLike, like } = MatchersV3;
 
 const provider = new PactV3({
     consumer: "StockService",
@@ -72,11 +71,12 @@ describe('Stock service test', () => {
         });
 
         await provider.executeTest(async (mockserver) => {
-            let stockService = new StockService("http://localhost:1234");
+            let stockService = new StockService(mockserver.url);
             let stock = await stockService.getStock("CT800");
-            expect(stock.httpStatusCode).toBe(200);
-            expect(stock.filmStock.film.name).toBe("CT800");
-            expect(stock.filmStock.film.contacts?.find(person => person.name == "Andy")?.location).toBe("Italy");
+            expect(stock).toStrictEqual(EMULSIVE_FILM_RESPONSE);
+            // expect(stock.httpStatusCode).toBe(200);
+            // expect(stock.filmStock.film.name).toBe("CT800");
+            // expect(stock.filmStock.film.contacts?.find(person => person.name == "Andy")?.location).toBe("Italy");
         });
     })
 });
