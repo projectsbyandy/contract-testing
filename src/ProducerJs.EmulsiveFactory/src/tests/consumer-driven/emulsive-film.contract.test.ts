@@ -6,11 +6,9 @@ const { eachLike, like } = MatchersV3;
 const provider = new PactV3({
     consumer: "StockService",
     provider: "EmulsiveFactory",
-    //log: path.resolve(process.cwd(), "logs", "pact.log"),
-    //logLevel: "warn",
+    logLevel: "info",
     dir: path.resolve(process.cwd(), "pacts"),
     spec: SpecificationVersion.SPECIFICATION_VERSION_V3,
-    //host: "127.0.0.1"
     port: 1234
 });
 
@@ -56,7 +54,7 @@ const EMULSIVE_FILM_RESPONSE = {
 
 describe('Stock service test', () => {
     test("Get details of CT800 film ", async () => {
-        await provider.addInteraction({
+        provider.addInteraction({
             states: [{ description: 'CT800 film exists' }],
             uponReceiving: 'a request for CT800 film details',
             withRequest: {
@@ -75,5 +73,5 @@ describe('Stock service test', () => {
             let stock = await stockService.getStock("CT800");
             expect(stock).toStrictEqual(EMULSIVE_FILM_RESPONSE);
         });
-    })
+    });
 });
