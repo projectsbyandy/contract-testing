@@ -59,7 +59,7 @@ describe('Stock service test', () => {
     test("Get details of CT800 film ", async () => {
         await provider.addInteraction({
             states: [{ description: 'CT800 film exists' }],
-            uponReceiving: 'a request for a user',
+            uponReceiving: 'a request for CT800 film details',
             withRequest: {
                 method: 'GET',
                 path: '/Stock/CT800',

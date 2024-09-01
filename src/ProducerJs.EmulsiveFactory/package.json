@@ -10,7 +10,9 @@
   },
   "scripts": {
     "start": "tsc && node dist/app.js",
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/app.ts",
+    "test:contract": "jest emulsive-film.contract.test.ts",
+    "test": "jest"
   },
   "dependencies": {
     "express": "^4.19.2",
