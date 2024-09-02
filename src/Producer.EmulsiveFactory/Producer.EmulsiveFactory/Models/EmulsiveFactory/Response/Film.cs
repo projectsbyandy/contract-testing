@@ -18,9 +18,9 @@ public class Film
     [JsonPropertyName("manufacturer")]
     public Manufacturer? Manufacturer { get; set; }
     
-    [JsonPropertyName("Contacts")]
+    [JsonPropertyName("contacts")]
     public IList<Person>? Contacts { get; set; }
     
-    [JsonPropertyName("Tags")]
+    [JsonPropertyName("tags")]
     public IList<Tag>? Tags { get; set; }
 }
