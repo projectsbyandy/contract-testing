@@ -17,13 +17,12 @@ export class StockService {
     async isEndPointRunning() {
       try {
         await axios.get(`${this.baseUrl}/swagger/index.html`, { httpsAgent: agent });
-        return true;
       } catch (error) {
-        if (axios.isAxiosError(error)) {
-          if(error.code == 'ECONNREFUSED')
+        if (axios.isAxiosError(error) && error.code == 'ECONNREFUSED') {
             throw Error('Emulsive Service not running');
         }
-        throw Error('Unable to talk to Emulsive Service');
+
+        throw Error(`Unable call Emulsive Service ${error}`);
       }
     }
 
