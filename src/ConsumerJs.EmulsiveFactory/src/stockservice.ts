@@ -14,6 +14,19 @@ export class StockService {
         this.baseUrl = baseUrl;
     }
 
+    async isEndPointRunning() {
+      try {
+        await axios.get(`${this.baseUrl}/swagger/index.html`, { httpsAgent: agent });
+        return true;
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          if(error.code == 'ECONNREFUSED')
+            throw Error('Emulsive Service not running');
+        }
+        throw Error('Unable to talk to Emulsive Service');
+      }
+    }
+
     async getStock(filmName: string): Promise<StockServiceResponse> {
         try {
           const response = await axios.get<StockServiceResponse>(`${this.baseUrl}/Stock/${filmName}`, { httpsAgent: agent });
