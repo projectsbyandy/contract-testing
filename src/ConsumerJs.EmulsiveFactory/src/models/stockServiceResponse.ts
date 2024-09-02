@@ -6,8 +6,8 @@ export interface StockServiceResponse {
 }
 
 export interface Stock {
-    InStock : number,
-    OnOrder: number
+    inStock : number,
+    onOrder: number
 }
 
 export interface FilmStock {
