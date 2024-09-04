@@ -16,7 +16,7 @@ public class PhotographyStoreStockTests
     {
         var pact = Pact.V4("PhotographyShop", "EmulsiveFactory-StockApi", new PactConfig()
         {
-            PactDir = PactUtils.ContractsLocation(ContractStrategy.Producer)
+            PactDir = PactUtils.ContractsLocation(ContractStrategy.ProducerDriven)
         });
         _pactBuilder = pact.WithHttpInteractions();
     }
