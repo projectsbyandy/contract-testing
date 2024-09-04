@@ -23,4 +23,14 @@ public class StockController : ControllerBase
             ? NotFound($"Stock for film name: {filmName} not found") 
             : Ok(locatedItem);
     }
+    
+    [HttpGet]
+    public IActionResult GetAllFilmStock()
+    {
+        var locatedItem = _filmStockRepo.GetAll();
+        
+        return locatedItem is null 
+            ? NotFound($"Stock not found") 
+            : Ok(locatedItem);
+    }
 }

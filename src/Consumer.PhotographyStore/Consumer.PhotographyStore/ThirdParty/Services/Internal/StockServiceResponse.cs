@@ -4,11 +4,11 @@ using Consumer.PhotographyStore.ThirdParty.Models.Stock;
 
 namespace Consumer.PhotographyStore.ThirdParty.Services.Internal;
 
-public record StockServiceResponse(HttpStatusCode HttpStatusCode)
+public record StockServiceResponse<T>(HttpStatusCode HttpStatusCode)
 {
     [JsonPropertyName("httpStatusCode")]
     public HttpStatusCode HttpStatusCode { get; } = HttpStatusCode;
     
     [JsonPropertyName("filmStock")]
-    public FilmStock? FilmStock { get; set; }
+    public T? Result { get; set; }
 }

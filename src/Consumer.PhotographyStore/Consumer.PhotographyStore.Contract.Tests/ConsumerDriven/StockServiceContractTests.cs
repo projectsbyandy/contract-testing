@@ -43,7 +43,7 @@ public class StockServiceContractTests
                 .WithJsonBody(new
                 {
                     httpStatusCode = Match.Type(200),
-                    filmStock = new
+                    result = new
                     {
                         film = new 
                         {
@@ -70,9 +70,9 @@ public class StockServiceContractTests
 
             // Then (NOTE we are verifying the mock data, these checks have no bearing on the data inside the generated Pact
             response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
-            response.FilmStock?.Film?.Name.Should().Be("Fuji400H");
-            response.FilmStock?.Stock?.InStock.Should().Be(100);
-            response.FilmStock?.Stock?.OnOrder.Should().Be(200);
+            response.Result?.Film?.Name.Should().Be("Fuji400H");
+            response.Result?.Stock?.InStock.Should().Be(100);
+            response.Result?.Stock?.OnOrder.Should().Be(200);
         })!;
     }
 }

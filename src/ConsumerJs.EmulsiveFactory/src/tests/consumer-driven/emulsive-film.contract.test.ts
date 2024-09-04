@@ -16,7 +16,7 @@ const provider = new PactV3({
 
 const EMULSIVE_FILM_RESPONSE = {
     "httpStatusCode": 200,
-    "filmStock": {
+    "result": {
         "film": {
             "name": "CT800",
             "filmType": 0,
@@ -71,15 +71,15 @@ describe('Stock service test', () => {
 
         await provider.executeTest(async (mockserver) => {
             let stockService = new StockService(mockserver.url);
-            let stock = await stockService.getStock("CT800");
+            let stock = await stockService.getStockForFilm("CT800");
             
             expect(stock.httpStatusCode).toBe(200);
-            expect(stock.filmStock.film.name).toBe(EMULSIVE_FILM_RESPONSE.filmStock.film.name);
-            expect(stock.filmStock.film.filmType).toBe(EMULSIVE_FILM_RESPONSE.filmStock.film.filmType);
-            expect(stock.filmStock.stock.inStock).toBe(607);
-            expect(stock.filmStock.stock.onOrder).toBe(9);
-            expect(stock.filmStock.film.manufacturer).toStrictEqual(EMULSIVE_FILM_RESPONSE.filmStock.film.manufacturer);
-            expect(stock.filmStock.film.tags).toStrictEqual(EMULSIVE_FILM_RESPONSE.filmStock.film.tags);
+            expect(stock.result.film.name).toBe(EMULSIVE_FILM_RESPONSE.result.film.name);
+            expect(stock.result.film.filmType).toBe(EMULSIVE_FILM_RESPONSE.result.film.filmType);
+            expect(stock.result.stock.inStock).toBe(607);
+            expect(stock.result.stock.onOrder).toBe(9);
+            expect(stock.result.film.manufacturer).toStrictEqual(EMULSIVE_FILM_RESPONSE.result.film.manufacturer);
+            expect(stock.result.film.tags).toStrictEqual(EMULSIVE_FILM_RESPONSE.result.film.tags);
         })
     })
 });

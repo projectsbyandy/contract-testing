@@ -37,7 +37,7 @@ public class StockLevelsController : ControllerBase
             Guard.Against.Null(supportedFilm.Name);
             var stockResponse =  _stockService.GetStockForAsync(supportedFilm.Name).Result;
             if (stockResponse.HttpStatusCode is HttpStatusCode.OK)
-                filmStocks.Add(stockResponse.FilmStock);
+                filmStocks.Add(stockResponse.Result);
         });
 
         return filmStocks.Count == 0 

@@ -1,4 +1,4 @@
-import { StockServiceResponse } from "./models/stockServiceResponse";
+import { FilmStock, StockServiceResponse } from "./models/stockServiceResponse";
 import https from 'https';
 import axios from 'axios'
 
@@ -26,9 +26,9 @@ export class StockService {
       }
     }
 
-    async getStock(filmName: string): Promise<StockServiceResponse> {
+    async getStockForFilm(filmName: string): Promise<StockServiceResponse<FilmStock>> {
         try {
-          const response = await axios.get<StockServiceResponse>(`${this.baseUrl}/Stock/${filmName}`, { httpsAgent: agent });
+          const response = await axios.get<StockServiceResponse<FilmStock>>(`${this.baseUrl}/Stock/${filmName}`, { httpsAgent: agent });
           const stockServiceResponse = response.data;
 
           console.log(stockServiceResponse);

@@ -1,8 +1,8 @@
 import { Film } from "./film";
 
-export interface StockServiceResponse {
+export interface StockServiceResponse<Type> {
     httpStatusCode: number,
-    filmStock: FilmStock,
+    result: Type,
 }
 
 export interface Stock {

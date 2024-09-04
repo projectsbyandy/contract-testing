@@ -3,11 +3,11 @@ using System.Text.Json.Serialization;
 
 namespace Producer.EmulsiveFactory.Models.Stock.Response;
 
-public record StockServiceResponse(HttpStatusCode HttpStatusCode)
+public record StockServiceResponse<T>(HttpStatusCode HttpStatusCode)
 {
     [JsonPropertyName("httpStatusCode")]
     public HttpStatusCode HttpStatusCode { get; } = HttpStatusCode;
     
-    [JsonPropertyName("filmStock")]
-    public FilmStock? FilmStock { get; set; }
+    [JsonPropertyName("result")]
+    public T? Result { get; set; }
 }

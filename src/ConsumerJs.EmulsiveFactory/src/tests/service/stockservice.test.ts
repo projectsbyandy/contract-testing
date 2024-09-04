@@ -12,9 +12,9 @@ describe('Stock Service Tests', () => {
       });
   
       it('will return data for a valid film', async () => {
-        const stock = await stockService.getStock("CT800");
+        const stock = await stockService.getStockForFilm("CT800");
         expect(stock.httpStatusCode).toBe(200);
-        expect(stock.filmStock.film.name).toBe("CT800")
+        expect(stock.result.film.name).toBe("CT800")
       });
     });
 });

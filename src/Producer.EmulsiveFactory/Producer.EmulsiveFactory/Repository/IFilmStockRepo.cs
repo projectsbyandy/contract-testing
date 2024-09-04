@@ -4,5 +4,7 @@ namespace Producer.EmulsiveFactory.Repository;
 
 public interface IFilmStockRepo
 {
-    StockServiceResponse? GetStockFor(string filmName);
+    StockServiceResponse<FilmStock>? GetStockFor(string filmName);
+    StockServiceResponse<IList<FilmStock>>? GetAll();
+
 }
