@@ -1,4 +1,6 @@
 import { StockService } from "../../stockservice";
+import { expect, beforeAll } from '@jest/globals';
+
 
 let stockService: StockService;
 
