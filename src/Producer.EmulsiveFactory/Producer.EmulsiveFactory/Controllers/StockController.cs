@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using Producer.EmulsiveFactory.Repository;
 
@@ -18,6 +19,12 @@ public class StockController : ControllerBase
     public IActionResult GetStockFor(string filmName)
     {
         var locatedItem = _filmStockRepo.GetStockFor(filmName);
+        
+        ArgumentNullException.ThrowIfNull(locatedItem);
+        
+        // Breaking contract change 3 - additional validation in service
+        // if (locatedItem.Result.Film.Manufacturer.Name.Equals(locatedItem.Result.Film.Name) is false)
+        //     throw new DataException("Expect manufacturer name to equal film name");
         
         return locatedItem is null 
             ? NotFound($"Stock for film name: {filmName} not found") 

@@ -34,7 +34,7 @@ public class StockServiceContractTests
         const string filmName = "Portra400";
         
         _pactBuilder?
-            .UponReceiving("An opinion service request")
+            .UponReceiving("A request for a film is received")
                 .Given("an Stock request is made with a film name")
                 .WithRequest(HttpMethod.Get, $"/Stock/{filmName}")
             .WillRespond()
