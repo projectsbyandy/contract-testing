@@ -19,8 +19,6 @@ public class StockController : ControllerBase
     {
         var locatedItem = _filmStockRepo.GetStockFor(filmName);
         
-        ArgumentNullException.ThrowIfNull(locatedItem);
-        
         // Breaking contract change 3 - additional validation in service
         // if (locatedItem.Result.Film.Manufacturer.Name.Equals(locatedItem.Result.Film.Name) is false)
         //     throw new DataException("Expect manufacturer name to equal film name");

@@ -6,8 +6,8 @@ import {expect, jest, test} from '@jest/globals';
 
 
 const provider = new PactV3({
-    consumer: "StockServiceApiJs",
-    provider: "EmulsiveFactoryApi",
+    consumer: "FilmMuseum-StockServiceApiJs",
+    provider: "EmulsiveFactory-StockApi",
     logLevel: "info",
     dir: path.resolve(process.cwd(), "../SharedPactContracts/ConsumerDriven"),
     spec: SpecificationVersion.SPECIFICATION_VERSION_V3,

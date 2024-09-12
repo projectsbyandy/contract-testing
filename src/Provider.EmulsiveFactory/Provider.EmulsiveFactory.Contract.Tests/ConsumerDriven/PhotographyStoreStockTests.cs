@@ -16,7 +16,7 @@ public class PhotographyStoreStockTests : StockServiceFixture
         _config = new PactVerifierConfig();
     }
     
-    [Test(Description = "Consumer Driven Contract Test")]
+    [Test(Description = "Consumer Driven Contract Test. Generated from Photography Store")]
     public void Verify_Alignment_With_Consumer_Photography_Shop_Contract()
     {
         // Given
@@ -32,11 +32,11 @@ public class PhotographyStoreStockTests : StockServiceFixture
             .Verify();
     }
     
-    [Test(Description = "Consumer Driven Contract Test. Generated from Stock Service JS")]
+    [Test(Description = "Consumer Driven Contract Test. Generated from FilmMuseum JS")]
     public void Verify_Alignment_With_Stock_Service_Contract()
     {
         // Given
-        var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}StockServiceApiJs-EmulsiveFactoryApi.json";
+        var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}FilmMuseum-StockServiceApiJs-EmulsiveFactory-StockApi.json";
 
         // When / Then
         using var pactVerifier = new PactVerifier("StockApi", _config);

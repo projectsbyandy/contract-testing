@@ -11,7 +11,7 @@
   "scripts": {
     "start": "tsc && node dist/app.js",
     "dev": "nodemon src/app.ts",
-    "test:contract": "jest emulsive-film.contract.test.ts",
+    "test:contract": "jest emulsiveFactoryStock.contract.test.ts",
     "test": "jest"
   },
   "dependencies": {
