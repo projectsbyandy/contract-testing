@@ -1,4 +1,4 @@
-import { FilmStock, StockServiceResponse } from "./models/stockServiceResponse";
+import { FilmStock, StockServiceResponse } from "../models/stockServiceResponse";
 import https from 'https';
 import axios from 'axios'
 

@@ -1,4 +1,4 @@
-import { StockService } from "../../stockservice";
+import { StockService } from "../service/stockservice";
 import { expect, beforeAll } from '@jest/globals';
 
 

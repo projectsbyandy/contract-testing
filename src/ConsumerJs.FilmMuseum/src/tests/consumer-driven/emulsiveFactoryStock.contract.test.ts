@@ -1,6 +1,6 @@
 import path from "path";
 import { PactV3, MatchersV3, SpecificationVersion } from "@pact-foundation/pact";
-import { StockService } from '../../stockservice';
+import { StockService } from '../../service/stockservice';
 const { eachLike, like } = MatchersV3;
 import {expect, jest, test} from '@jest/globals';
 
