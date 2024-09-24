@@ -47,4 +47,20 @@ public class PhotographyStoreStockTests : StockServiceFixture
             .WithCustomHeader("Content-Type", "application/json; charset=utf-8")
             .Verify();
     }
+    
+    [Test(Description = "Consumer Driven Contract Test. Generated from Film Developer Service Python")]
+    public void Verify_Alignment_With_Film_Developer_Contract()
+    {
+        // Given
+        var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}developerservice-emulsivefactory-stockapi.json";
+
+        // When / Then
+        using var pactVerifier = new PactVerifier("StockApi", _config);
+        
+        pactVerifier
+            .WithHttpEndpoint(ServiceUri)
+            .WithFileSource(new FileInfo(contractPactPath))
+            .WithCustomHeader("Content-Type", "application/json; charset=utf-8")
+            .Verify();
+    }
 }

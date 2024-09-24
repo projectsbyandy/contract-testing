@@ -4,7 +4,7 @@ import { expect, beforeAll } from '@jest/globals';
 
 let stockService: StockService;
 
-describe('Stock Service Tests', () => {  
+describe.skip('Stock Service Tests', () => {  
     describe('Check Get Stock endpoint', () => {
       beforeAll(async () => {
         stockService = new StockService("https://localhost:7194")

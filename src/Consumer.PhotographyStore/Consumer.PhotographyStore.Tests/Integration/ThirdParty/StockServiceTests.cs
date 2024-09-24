@@ -4,7 +4,7 @@ using FluentAssertions;
 
 namespace Consumer.PhotographyStore.Tests.Integration.ThirdParty;
 
-// NOTE - Requires Provider to be running
+[Ignore("Integration test dependent on Provider running")]
 public class StockServiceTests
 {
     [Test]

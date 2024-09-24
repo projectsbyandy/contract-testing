@@ -3,9 +3,9 @@ using FluentAssertions;
 
 namespace Consumer.PhotographyStore.Tests.Integration.ThirdParty;
 
-// NOTE - Requires Provider to be running
 public class EmulsiveFilmServiceTests
 {
+    [Ignore("Integration test dependent on Provider running")]
     [Test]
     public async Task Verify_All_Films_Can_Be_Retrieved()
     {
