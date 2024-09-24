@@ -51,6 +51,7 @@ This is an example of Contract Testing using Pact. Pact enables contracts to be 
 | Provider     | Stock Service API     | C#       |
 | Consumer A   | Photography Store     | C#       |
 | Consumer B   | Film Museum           | JS / TS  |
+| Consumer C   | Film Developer        | Python   |
 
 ### Provider example of breaking contract changes
 - Breaking contract change 1 - Delete a property

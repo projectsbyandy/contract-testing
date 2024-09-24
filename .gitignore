@@ -399,4 +399,8 @@ FodyWeavers.xsd
 .DS_Store
 .idea/
 
+#python
+.venv
+
+# Contract testing specific
 SharedPactContracts/
