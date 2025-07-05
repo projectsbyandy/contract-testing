@@ -1,17 +1,7 @@
 import path from "path";
-import { PactV3, MatchersV3, SpecificationVersion } from "@pact-foundation/pact";
-import { StockService, IStockService } from '../../service';
-const { eachLike, like } = MatchersV3;
-import {expect, jest, test} from '@jest/globals';
-
-const provider = new PactV3({
-    consumer: "FilmMuseum-StockServiceApiJs",
-    provider: "EmulsiveFactory-StockApi",
-    logLevel: "info",
-    dir: path.resolve(process.cwd(), "../SharedPactContracts/ConsumerDriven"),
-    spec: SpecificationVersion.SPECIFICATION_VERSION_V3,
-    port: 1234
-});
+import { PactV4, MatchersV3 } from "@pact-foundation/pact";
+import {expect, test} from '@jest/globals';
+import { IStockService, StockService } from "../../service";
 
 const EMULSIVE_FILM_RESPONSE = {
     "httpStatusCode": 200,
@@ -52,33 +42,45 @@ const EMULSIVE_FILM_RESPONSE = {
     }
 };
 
-describe('Stock service test', () => {
-    test("Get details of CT800 film ", async () => {
-        provider.addInteraction({
-            states: [{ description: 'CT800 film exists' }],
-            uponReceiving: 'a request for CT800 film details',
-            withRequest: {
-                method: 'GET',
-                path: '/Stock/CT800',
-            },
-            willRespondWith: {
-                status: 200,
-                headers: { 'Content-Type': 'application/json' },
-                body: EMULSIVE_FILM_RESPONSE,
-            },
-        });
+describe('Stock service contract test', () => {
+    let provider: PactV4
 
-        await provider.executeTest(async (mockserver) => {
-            let stockService: IStockService = new StockService(mockserver.url);
-            let stock = await stockService.getStockForFilm("CT800");
-            
-            expect(stock.httpStatusCode).toBe(200);
-            expect(stock.result.film.name).toBe(EMULSIVE_FILM_RESPONSE.result.film.name);
-            expect(stock.result.film.filmType).toBe(EMULSIVE_FILM_RESPONSE.result.film.filmType);
-            expect(stock.result.stock.inStock).toBe(607);
-            expect(stock.result.stock.onOrder).toBe(9);
-            expect(stock.result.film.manufacturer).toStrictEqual(EMULSIVE_FILM_RESPONSE.result.film.manufacturer);
-            expect(stock.result.film.tags).toStrictEqual(EMULSIVE_FILM_RESPONSE.result.film.tags);
-        })
-    })
+    beforeAll(() => {
+        process.env.PACT_DO_NOT_TRACK = "1";
+        
+        provider = new PactV4({
+            consumer: "FilmMuseum-StockServiceApiJs",
+            provider: "EmulsiveFactory-StockApi",
+            logLevel: "info",
+            dir: path.resolve(process.cwd(), "../SharedPactContracts/ConsumerDriven"),
+            port: 1234
+        });
+    });
+
+    test("Get details of CT800 film", async () => {
+        // Arrange
+        await provider
+            .addInteraction()
+            .given('CT800 film exists')
+            .uponReceiving('a request for CT800 film details')
+            .withRequest('GET', '/Stock/CT800')
+            .willRespondWith(200, (builder) =>
+                builder
+                .headers({ 'Content-Type': 'application/json' })
+                .jsonBody(EMULSIVE_FILM_RESPONSE))
+            .executeTest(async (mockserver) => {
+                // Act
+                let stockService: IStockService = new StockService(mockserver.url);
+                let stock = await stockService.getStockForFilm("CT800");
+                
+                // Assert
+                expect(stock.httpStatusCode).toBe(200);
+                expect(stock.result.film.name).toBe(EMULSIVE_FILM_RESPONSE.result.film.name);
+                expect(stock.result.film.filmType).toBe(EMULSIVE_FILM_RESPONSE.result.film.filmType);
+                expect(stock.result.stock.inStock).toBe(607);
+                expect(stock.result.stock.onOrder).toBe(9);
+                expect(stock.result.film.manufacturer).toStrictEqual(EMULSIVE_FILM_RESPONSE.result.film.manufacturer);
+                expect(stock.result.film.tags).toStrictEqual(EMULSIVE_FILM_RESPONSE.result.film.tags);
+        });
+    });
 });

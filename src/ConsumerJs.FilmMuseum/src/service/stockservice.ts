@@ -32,7 +32,6 @@ export class StockService implements IStockService {
           const response = await axios.get<StockServiceResponse<FilmStock>>(`${this.baseUrl}/Stock/${filmName}`, { httpsAgent: agent });
           const stockServiceResponse = response.data;
 
-          console.log(stockServiceResponse);
           return stockServiceResponse;
         } catch (error) {
           if (axios.isAxiosError(error)) {
