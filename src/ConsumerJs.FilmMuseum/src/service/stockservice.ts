@@ -1,20 +1,21 @@
-import { FilmStock, StockServiceResponse } from "../models/stockServiceResponse";
+import { FilmStock, StockServiceResponse } from "../models";
 import https from 'https';
 import axios from 'axios'
+import { IStockService } from ".";
 
 // For testing, generate certificate for prod use
 const agent = new https.Agent({
   rejectUnauthorized: false,
 });
 
-export class StockService {
+export class StockService implements IStockService {
     private baseUrl: string;
 
     constructor(baseUrl: string) {
         this.baseUrl = baseUrl;
     }
 
-    async isEndPointRunning() {
+    async isEndPointRunning(): Promise<void> {
       try {
         await axios.get(`${this.baseUrl}/swagger/index.html`, { httpsAgent: agent });
       } catch (error) {

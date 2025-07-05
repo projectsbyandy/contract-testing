@@ -1,4 +1,4 @@
-export interface Manufacturer {
+export type Manufacturer = {
     name: string,
     location: string
 }

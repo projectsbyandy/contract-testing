@@ -1,8 +1,8 @@
-import { StockService } from "../service/stockservice";
+import { StockService, IStockService } from "../service";
 import { expect, beforeAll } from '@jest/globals';
 
 
-let stockService: StockService;
+let stockService: IStockService;
 
 describe.skip('Stock Service Tests', () => {  
     describe('Check Get Stock endpoint', () => {

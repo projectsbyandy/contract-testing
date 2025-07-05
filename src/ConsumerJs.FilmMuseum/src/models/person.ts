@@ -1,4 +1,4 @@
-export interface Person {
+export type Person = {
     name: string,
     email: string,
     location: string

@@ -1,16 +1,16 @@
-import { Film } from "./film";
+import { Film } from "./Film";
 
-export interface StockServiceResponse<Type> {
+export type StockServiceResponse<TResponseBody> = {
     httpStatusCode: number,
-    result: Type,
+    result: TResponseBody,
 }
 
-export interface Stock {
+export type Stock = {
     inStock : number,
     onOrder: number
 }
 
-export interface FilmStock {
+export type FilmStock = {
     film: Film,
     stock: Stock
 }

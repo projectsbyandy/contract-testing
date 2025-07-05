@@ -58,4 +58,58 @@ This is an example of Contract Testing using Pact. Pact enables contracts to be 
 - Breaking contract change 2 - Change in property type
 - Breaking contract change 3 - Additional business logic in service e.g. validation in service
 
+### Broker
+In this example contracts are shared via common folder location. A more comprehensive solution would be to setup a dockerised broker from Pact-Foundations or use paid broker from smartbear.
+
+### Project Setup
+
+## Pre-requisite
+- .NET8
+- node and npm
+- python 3.12+
+
+## C# Provider
+1. Navigate to Contract-Testing\src\Provider.EmulsiveFactory
+2. Rebuild solution
+2. Press Run button with Provider.EmulsiveFactory selected
+3. You will be prompted to create a certificate, proceed with creation
+4. The swagger page will sucessfully load.
+5. Stop the process and navigate to Test Explorer, provider tests will be loaded.
+
+## C# Consumer
+1. Navigate to Contract-Testing\src\Provider.Consumer.PhotographyStore
+2. Repeat steps 2 onwards from Provider.
+3. Navigate to Test Explorer, consumer tests will be loaded.
+
+## Python Consumer
+via Pycharm
+- open folder - Contract-Testing\src\ConsumerPython
+- pre-req from requirements.txt should automatically install
+- Navigate to the tests folder and file 'test_emulsive_factory_stock_contract.py'
+- Play icon should be enabled
+
+via VSCode
+- open folder - Contract-Testing\src\ConsumerPython
+- open VS Command palette 
+  - type Python Create environment
+  - select venv
+  - select installed intepreter
+  - select requirements.txt
+- Navigate to the Test button of the left hand panel
+  - Select Configure Python Test
+  - Select Pytest
+  - Select the tests folder
+- Close and reopen the ConsumerPython folder in VSCode
+- Examine the Testing area and they should have successfully populated
+
+## Javascript Consumer
+via VSCode
+- In powershell navigate to Contract-Testing\src\ConsumerJs.FilmMuseum
+- Run npm install
+- Open in VS code from this folder
+- Navigate to the Testing area on the left hand panel
+- Examine the Testing area and they should have successfully populated
+
+### Running Tests
+TBC
 

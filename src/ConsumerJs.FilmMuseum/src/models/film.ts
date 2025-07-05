@@ -1,7 +1,7 @@
-import { FilmType } from "./filmType";
-import { Manufacturer } from "./manufacturer";
-import { Person } from "./person";
-import { Tag } from "./tag";
+import { FilmType } from "./FilmType";
+import { Manufacturer } from "./Manufacturer";
+import { Person } from "./Person";
+import { Tag } from "./Tag";
 
 export type Film = {
     name: string,

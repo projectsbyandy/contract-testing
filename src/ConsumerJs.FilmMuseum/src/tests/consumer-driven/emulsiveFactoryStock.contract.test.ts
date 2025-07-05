@@ -1,9 +1,8 @@
 import path from "path";
 import { PactV3, MatchersV3, SpecificationVersion } from "@pact-foundation/pact";
-import { StockService } from '../../service/stockservice';
+import { StockService, IStockService } from '../../service';
 const { eachLike, like } = MatchersV3;
 import {expect, jest, test} from '@jest/globals';
-
 
 const provider = new PactV3({
     consumer: "FilmMuseum-StockServiceApiJs",
@@ -70,7 +69,7 @@ describe('Stock service test', () => {
         });
 
         await provider.executeTest(async (mockserver) => {
-            let stockService = new StockService(mockserver.url);
+            let stockService: IStockService = new StockService(mockserver.url);
             let stock = await stockService.getStockForFilm("CT800");
             
             expect(stock.httpStatusCode).toBe(200);

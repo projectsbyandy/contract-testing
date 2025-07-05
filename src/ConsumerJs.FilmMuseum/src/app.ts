@@ -1,6 +1,6 @@
 import express from 'express';
-import { Film } from './models/film';
-import { FilmType } from './models/filmType';
+import { Film } from './models/Film';
+import { FilmType } from './models/FilmType';
 
 const app = express();
 const port = 5001;
