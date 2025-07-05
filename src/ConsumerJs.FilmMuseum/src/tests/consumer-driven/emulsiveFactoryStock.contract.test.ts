@@ -49,7 +49,7 @@ describe('Stock service contract test', () => {
         process.env.PACT_DO_NOT_TRACK = "1";
         
         provider = new PactV4({
-            consumer: "FilmMuseum-StockServiceApiJs",
+            consumer: "FilmMuseum-StockServiceApi-Js",
             provider: "EmulsiveFactory-StockApi",
             logLevel: "info",
             dir: path.resolve(process.cwd(), "../SharedPactContracts/ConsumerDriven"),

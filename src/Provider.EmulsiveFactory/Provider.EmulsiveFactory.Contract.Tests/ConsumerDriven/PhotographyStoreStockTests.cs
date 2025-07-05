@@ -13,6 +13,7 @@ public class PhotographyStoreStockTests : StockServiceFixture
     [SetUp]
     public void Setup()
     {
+        Environment.SetEnvironmentVariable("PACT_DO_NOT_TRACK", "true");
         _config = new PactVerifierConfig();
     }
     
@@ -20,7 +21,7 @@ public class PhotographyStoreStockTests : StockServiceFixture
     public void Verify_Alignment_With_Consumer_Photography_Shop_Contract()
     {
         // Given
-        var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}PhotographyShop-EmulsiveFactory-StockApi.json";
+        var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}PhotographyShop-CSharp-EmulsiveFactory-StockApi.json";
 
         // When / Then
         using var pactVerifier = new PactVerifier("StockApi", _config);
@@ -36,7 +37,7 @@ public class PhotographyStoreStockTests : StockServiceFixture
     public void Verify_Alignment_With_Stock_Service_Contract()
     {
         // Given
-        var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}FilmMuseum-StockServiceApiJs-EmulsiveFactory-StockApi.json";
+        var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}FilmMuseum-StockServiceApi-Js-EmulsiveFactory-StockApi.json";
 
         // When / Then
         using var pactVerifier = new PactVerifier("StockApi", _config);
@@ -52,7 +53,7 @@ public class PhotographyStoreStockTests : StockServiceFixture
     public void Verify_Alignment_With_Film_Developer_Contract()
     {
         // Given
-        var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}developerservice-emulsivefactory-stockapi.json";
+        var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}developerservice-python-emulsivefactory-stockapi.json";
 
         // When / Then
         using var pactVerifier = new PactVerifier("StockApi", _config);

@@ -11,9 +11,9 @@ from service.developer_service import DeveloperService
 
 class EmulsiveFactoryStockContractTest(unittest.TestCase):
     def setUp(self):
-        self.pact = Consumer("DeveloperService").has_pact_with(
+        self.pact = Consumer("DeveloperService-Python").has_pact_with(
             Provider('EmulsiveFactory-StockApi'),
-            pact_dir = Path(f"{Path().cwd().parent.parents[0]}/SharedPactContracts/ConsumerDriven").__str__()
+            pact_dir = Path(f"{Path().cwd().parents[0]}/SharedPactContracts/ConsumerDriven").__str__()
         )
 
         self.pact.start_service()
@@ -60,7 +60,7 @@ class EmulsiveFactoryStockContractTest(unittest.TestCase):
 
         atexit.register(self.pact.stop_service)
         
-    def test_stock_service_consumer(self):
+    def test_stock_service_consumer_contract(self):
 
         # Arrange
         (self.pact

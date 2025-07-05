@@ -1,3 +1,4 @@
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -20,7 +21,8 @@ public class StockServiceContractTests
     [SetUp]
     public void Setup()
     {
-        var pact = Pact.V4("PhotographyShop", "EmulsiveFactory-StockApi", new PactConfig()
+        Environment.SetEnvironmentVariable("PACT_DO_NOT_TRACK", "true");
+        var pact = Pact.V4("PhotographyShop-CSharp", "EmulsiveFactory-StockApi", new PactConfig()
         {
             PactDir = PactUtils.ContractsLocation(ContractStrategy.Consumer)
         });
