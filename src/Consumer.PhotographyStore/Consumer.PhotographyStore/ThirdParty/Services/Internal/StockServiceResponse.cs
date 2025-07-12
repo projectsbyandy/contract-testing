@@ -9,6 +9,6 @@ public record StockServiceResponse<T>(HttpStatusCode HttpStatusCode)
     [JsonPropertyName("httpStatusCode")]
     public HttpStatusCode HttpStatusCode { get; } = HttpStatusCode;
     
-    [JsonPropertyName("filmStock")]
+    [JsonPropertyName("result")]
     public T? Result { get; set; }
 }

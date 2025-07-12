@@ -49,8 +49,11 @@ public class StockServiceContractTests
                     {
                         film = new 
                         {
-                            name = Match.Type("Fuji400H"),
-                            filmType = Match.Type(FilmType.ThirtyFive)
+                            id = Match.Type(Guid.Parse("2dfe8135-8835-4107-b0b1-cf110c3b13b9")),
+                            name = Match.Type(filmName),
+                            filmType = Match.Type(FilmType.ThirtyFive),
+                            iso = Match.Number(400),
+                            isActive = Match.Type(true),
                         },
                         stock = new
                         {
@@ -69,11 +72,13 @@ public class StockServiceContractTests
             });
             
             var response = await client.GetStockForAsync(filmName);
-
+            var filmsResponse = response.Result;
             // Then (NOTE we are verifying the mock data, these checks have no bearing on the data inside the generated Pact
             response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
-            response.Result?.Film?.Name.Should().Be("Fuji400H");
-            response.Result?.Stock?.InStock.Should().Be(100);
+            response.Result?.Film?.Id.Should().Be(Guid.Parse("2dfe8135-8835-4107-b0b1-cf110c3b13b9"));
+            response.Result?.Film?.Name.Should().Be(filmName);
+            response.Result?.Film?.Iso.Should().Be(400);
+            response.Result?.Stock?.InStock.Should().BeGreaterThan(1);
             response.Result?.Stock?.OnOrder.Should().Be(200);
         })!;
     }

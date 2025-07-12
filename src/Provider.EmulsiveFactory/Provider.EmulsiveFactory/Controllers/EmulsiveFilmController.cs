@@ -1,3 +1,4 @@
+using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Mvc;
 using Provider.EmulsiveFactory.Models;
 using Provider.EmulsiveFactory.Models.EmulsiveFactory.Response;
@@ -32,7 +33,7 @@ public class EmulsiveFilmController : ControllerBase
     public IEnumerable<Film> GetByManufacturerAndFilmName(string manufacturer, string filmName)
     {
         var locatedItems =_filmStore.GetAll()
-            .Where(film => film.Manufacturer.Name.Equals(manufacturer)
+            .Where(film => Guard.Against.Null(film.Manufacturer.Name).Equals(manufacturer)
                                                             && film.Name!.Equals(filmName));
         _logger.Information("Located film {@Film}", locatedItems);
         

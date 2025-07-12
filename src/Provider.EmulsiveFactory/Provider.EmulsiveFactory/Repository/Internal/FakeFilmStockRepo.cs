@@ -51,7 +51,7 @@ public class FakeFilmStockRepo : IFilmStockRepo
                 {
                     // Breaking contract change 2 - change in property type
                     // OnOrder = _random.Next(10).ToString(),
-                    OnOrder = _random.Next(10),
+                    //OnOrder = _random.Next(10),
                     
                     // Breaking contract change 1 - Delete a property
                     InStock = _random.Next(1000)

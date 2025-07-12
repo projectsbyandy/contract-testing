@@ -14,10 +14,14 @@ public class FakeFilmStore : IFilmStore
                 Name = "Portra800",
                 Id = Guid.Parse("d4c835a7-93ea-43aa-895b-5c48eec5be2e"),
                 FilmType = FilmType.Large,
+                ProcessingType = "C41",
+                Iso = 800,
+                isActive = true,
                 Manufacturer = new Manufacturer()
                 {
                     Name = "Kodak",
-                    Location = "USA"
+                    Location = "USA",
+                    Date = DateOnly.FromDateTime(DateTime.Today - TimeSpan.FromDays(10))
                 },
                 Contacts = new List<Person>()
                 {
@@ -51,10 +55,14 @@ public class FakeFilmStore : IFilmStore
                 Name = "CT800",
                 Id = Guid.Parse("91ed96c5-9672-4988-aee8-34ec14eb89a6"),
                 FilmType = FilmType.Medium,
+                ProcessingType = "C41",
+                Iso = 800,
+                isActive = true,
                 Manufacturer = new Manufacturer()
                 {
                     Name = "Cinestill",
-                    Location = "Germany"
+                    Location = "Germany",
+                    Date = DateOnly.FromDateTime(DateTime.Today - TimeSpan.FromDays(5))
                 },
                 Contacts = new List<Person>()
                 {
@@ -89,6 +97,9 @@ public class FakeFilmStore : IFilmStore
                 Name = "Portra400",
                 Id = Guid.Parse("a9877e6b-a75a-4c9b-a841-4ce8d01745df"),
                 FilmType = FilmType.Large,
+                ProcessingType = "C41",
+                Iso = 400,
+                isActive = true,
                 Manufacturer = new Manufacturer()
                 {
                     Name = "Kodak",
@@ -132,10 +143,14 @@ public class FakeFilmStore : IFilmStore
                 Name = "Pro400",
                 Id = Guid.Parse("00c84d10-c681-4add-aff5-bcdb8adfd4b6"),
                 FilmType = FilmType.ThirtyFive,
+                ProcessingType = "E6",
+                Iso = 400,
+                isActive = true,
                 Manufacturer = new Manufacturer()
                 {
                     Name = "Fuji",
-                    Location = "Japan"
+                    Location = "Japan",
+                    Date = DateOnly.FromDateTime(DateTime.Today - TimeSpan.FromDays(2))
                 },
                 Contacts = new List<Person>()
                 {

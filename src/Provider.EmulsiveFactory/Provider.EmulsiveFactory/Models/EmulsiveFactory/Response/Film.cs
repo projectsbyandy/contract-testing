@@ -10,10 +10,19 @@ public class Film
     public string Name { get; set; } = default!;
 
     [JsonPropertyName("filmType")]
-    public FilmType FilmType { get; set; } = default!;
+    public FilmType FilmType { get; set; }
+
+    [JsonPropertyName("processingType")]
+    public string ProcessingType { get; set; } = default!;
     
     [JsonPropertyName("id")]
     public Guid Id { get; set; }
+    
+    [JsonPropertyName("iso")]
+    public int Iso { get; set; }
+    
+    [JsonPropertyName("isActive")]
+    public Boolean isActive { get; set; }
     
     [JsonPropertyName("manufacturer")]
     public Manufacturer Manufacturer { get; set; } = default!;

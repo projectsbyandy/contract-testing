@@ -11,4 +11,7 @@ public class Manufacturer
     
     [JsonPropertyName("location")]
     public string? Location { get; set; }
+    
+    [JsonPropertyName("date")]
+    public DateOnly Date { get; set; }
 }
