@@ -1,3 +1,3 @@
 export type Tag = {
-    Name: string;
+    name: string;
 }

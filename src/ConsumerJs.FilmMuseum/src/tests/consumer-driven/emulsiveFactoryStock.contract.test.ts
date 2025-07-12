@@ -1,7 +1,8 @@
 import path from "path";
-import { PactV4, MatchersV3 } from "@pact-foundation/pact";
+import { PactV4, Matchers } from "@pact-foundation/pact";
 import {expect, test} from '@jest/globals';
 import { IStockService, StockService } from "../../service";
+import { eachLike } from "@pact-foundation/pact/src/dsl/matchers";
 
 const EMULSIVE_FILM_RESPONSE = {
     "httpStatusCode": 200,
@@ -9,35 +10,23 @@ const EMULSIVE_FILM_RESPONSE = {
         "film": {
             "name": "CT800",
             "filmType": 0,
-            "id": MatchersV3.like("91ed96c5-9672-4988-aee8-34ec14eb89a6"),
+            "id": Matchers.uuid("91ed96c5-9672-4988-aee8-34ec14eb89a6"),
             "manufacturer": {
                 "name": "Cinestill",
                 "location": "Germany"
             },
-            "contacts": [
-                {
-                    "name": MatchersV3.like("Andy-bob"),
-                    "email": MatchersV3.like("Andy@test.com"),
-                    "location": MatchersV3.like("Italy")
-                },
-                {
-                    "name": MatchersV3.like("Jane"),
-                    "email": MatchersV3.like("Jane@test.com"),
-                    "location": MatchersV3.like("Dortmand")
-                }
-            ],
-            "tags": [
-                {
-                    "name": "Neon"
-                },
-                {
-                    "name": "Night"
-                }
-            ]
+            "contacts": eachLike({
+                "name": Matchers.string("Andy-bob"),
+                "email": Matchers.email("Andy@test.com"),
+                "location": Matchers.string("Italy")
+            }),
+            "tags": eachLike({
+                "name": Matchers.string("Emulsive")
+            })
         },
         "stock": {
-            "inStock": MatchersV3.like(607),
-            "onOrder": MatchersV3.like(9)
+            "inStock": Matchers.like(607),
+            "onOrder": Matchers.like(9)
         }
     }
 };
@@ -76,11 +65,28 @@ describe('Stock service contract test', () => {
                 // Assert
                 expect(stock.httpStatusCode).toBe(200);
                 expect(stock.result.film.name).toBe(EMULSIVE_FILM_RESPONSE.result.film.name);
+                expect(stock.result.film.id).toMatch("91ed96c5-9672-4988-aee8-34ec14eb89a6");
                 expect(stock.result.film.filmType).toBe(EMULSIVE_FILM_RESPONSE.result.film.filmType);
+                expect(stock.result.film.manufacturer).toStrictEqual({
+                    "name": "Cinestill",
+                    "location": "Germany"
+                });
+
+                expect(stock.result.film.contacts).toStrictEqual([
+                    {
+                        "name": "Andy-bob",
+                        "email": "Andy@test.com",
+                        "location": "Italy"
+                    }
+                ]);
+                expect(stock.result.film.tags).toStrictEqual([
+                    {
+                        "name": "Emulsive"
+                    }
+                ]);
+
                 expect(stock.result.stock.inStock).toBe(607);
                 expect(stock.result.stock.onOrder).toBe(9);
-                expect(stock.result.film.manufacturer).toStrictEqual(EMULSIVE_FILM_RESPONSE.result.film.manufacturer);
-                expect(stock.result.film.tags).toStrictEqual(EMULSIVE_FILM_RESPONSE.result.film.tags);
         });
     });
 });

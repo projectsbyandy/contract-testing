@@ -77,7 +77,6 @@ public class FakeFilmStore : IFilmStore
                         Name = "Jane",
                         Location = "Dortmand",
                         Email = "Jane@test.com"
-
                     }
                 },
                 Tags = new List<Tag>()
@@ -119,7 +118,6 @@ public class FakeFilmStore : IFilmStore
                         Name = "Linda",
                         Location = "Las Vegas",
                         Email = "linda@lucky.com"
-
                     }
                 },
                 Tags = new List<Tag>()
@@ -159,14 +157,12 @@ public class FakeFilmStore : IFilmStore
                         Name = "Stan",
                         Location = "Tokyo",
                         Email = "Stan@Lee.com"
-
                     },
                     new()
                     {
                         Name = "Koyo",
                         Location = "Osaka",
                         Email = "Koyo@Yam.com"
-
                     }
                 },
                 Tags = new List<Tag>()

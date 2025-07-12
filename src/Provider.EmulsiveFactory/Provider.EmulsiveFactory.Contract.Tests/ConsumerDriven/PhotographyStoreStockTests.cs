@@ -18,7 +18,7 @@ public class PhotographyStoreStockTests : StockServiceFixture
     }
     
     [Test(Description = "Consumer Driven Contract Test. Generated from Photography Store")]
-    public void Verify_Alignment_With_Consumer_Photography_Shop_Contract()
+    public void Verify_Alignment_With_Consumer_Photography_Shop_CSharp_Contract()
     {
         // Given
         var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}PhotographyShop-CSharp-EmulsiveFactory-StockApi.json";
@@ -34,7 +34,7 @@ public class PhotographyStoreStockTests : StockServiceFixture
     }
     
     [Test(Description = "Consumer Driven Contract Test. Generated from FilmMuseum JS")]
-    public void Verify_Alignment_With_Stock_Service_Contract()
+    public void Verify_Alignment_With_Consumer_FilmMuseum_JS_Contract()
     {
         // Given
         var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}FilmMuseum-StockServiceApi-Js-EmulsiveFactory-StockApi.json";
@@ -50,7 +50,7 @@ public class PhotographyStoreStockTests : StockServiceFixture
     }
     
     [Test(Description = "Consumer Driven Contract Test. Generated from Film Developer Service Python")]
-    public void Verify_Alignment_With_Film_Developer_Contract()
+    public void Verify_Alignment_With_Film_Developer_Python_Contract()
     {
         // Given
         var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}developerservice-python-emulsivefactory-stockapi.json";
