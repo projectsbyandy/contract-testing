@@ -2,14 +2,14 @@ using System.Text.Json.Serialization;
 
 namespace Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 
-public class Person
+public record Person
 {
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public string? Name { get; init; }
     
     [JsonPropertyName("email")]
-    public string? Email { get; set; }
+    public string? Email { get; init; }
     
     [JsonPropertyName("location")]
-    public string? Location { get; set; }
+    public string? Location { get; init; }
 }

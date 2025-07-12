@@ -54,6 +54,11 @@ public class StockServiceContractTests
                             filmType = Match.Type(FilmType.ThirtyFive),
                             iso = Match.Number(400),
                             isActive = Match.Type(true),
+                            manufacturer = new {
+                                name = Match.Type("Kodak"),
+                                location = Match.Type("USA"),
+                                date = Match.Type(DateOnly.FromDateTime(DateTime.Today)),
+                            }
                         },
                         stock = new
                         {
@@ -78,6 +83,13 @@ public class StockServiceContractTests
             response.Result?.Film?.Id.Should().Be(Guid.Parse("2dfe8135-8835-4107-b0b1-cf110c3b13b9"));
             response.Result?.Film?.Name.Should().Be(filmName);
             response.Result?.Film?.Iso.Should().Be(400);
+            response.Result?.Film?.isActive.Should().BeTrue();
+            response.Result?.Film?.Manufacturer.Should().Be(new Manufacturer()
+            {
+                Name = "Kodak",
+                Location = "USA",
+                Date = DateOnly.FromDateTime(DateTime.Today)
+            });
             response.Result?.Stock?.InStock.Should().BeGreaterThan(1);
             response.Result?.Stock?.OnOrder.Should().Be(200);
         })!;

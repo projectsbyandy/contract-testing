@@ -3,33 +3,33 @@ using System.Text.Json.Serialization;
 
 namespace Provider.EmulsiveFactory.Models.EmulsiveFactory.Response;
 
-public class Film
+public record Film
 {
     [Required]
     [JsonPropertyName("name")]
-    public string Name { get; set; } = default!;
+    public string Name { get; init; } = default!;
 
     [JsonPropertyName("filmType")]
-    public FilmType FilmType { get; set; }
+    public FilmType FilmType { get; init; }
 
     [JsonPropertyName("processingType")]
-    public string ProcessingType { get; set; } = default!;
+    public string ProcessingType { get; init; } = default!;
     
     [JsonPropertyName("id")]
-    public Guid Id { get; set; }
+    public Guid Id { get; init; }
     
     [JsonPropertyName("iso")]
-    public int Iso { get; set; }
+    public int Iso { get; init; }
     
     [JsonPropertyName("isActive")]
-    public Boolean isActive { get; set; }
+    public bool isActive { get; init; }
     
     [JsonPropertyName("manufacturer")]
-    public Manufacturer Manufacturer { get; set; } = default!;
+    public Manufacturer Manufacturer { get; init; } = default!;
     
     [JsonPropertyName("contacts")]
-    public IList<Person> Contacts { get; set; } = default!;
+    public IList<Person> Contacts { get; init; } = default!;
     
     [JsonPropertyName("tags")]
-    public IList<Tag> Tags { get; set; } = default!;
+    public IList<Tag> Tags { get; init; } = default!;
 }

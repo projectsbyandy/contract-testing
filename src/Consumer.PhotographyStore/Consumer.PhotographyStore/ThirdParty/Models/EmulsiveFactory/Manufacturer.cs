@@ -3,15 +3,15 @@ using System.Text.Json.Serialization;
 
 namespace Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 
-public class Manufacturer
+public record Manufacturer
 {
     [Required]
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public string? Name { get; init; }
     
     [JsonPropertyName("location")]
-    public string? Location { get; set; }
+    public string? Location { get; init; }
     
     [JsonPropertyName("date")]
-    public DateOnly Date { get; set; }
+    public DateOnly Date { get; init; }
 }

@@ -9,5 +9,5 @@ public record StockServiceResponse<T>(HttpStatusCode HttpStatusCode)
     public HttpStatusCode HttpStatusCode { get; } = HttpStatusCode;
     
     [JsonPropertyName("result")]
-    public T? Result { get; set; }
+    public T? Result { get; init; }
 }

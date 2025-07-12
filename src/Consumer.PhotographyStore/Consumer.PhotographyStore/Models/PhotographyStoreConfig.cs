@@ -2,11 +2,11 @@ using System.Text.Json.Serialization;
 
 namespace Consumer.PhotographyStore.Models;
 
-public class PhotographyStoreConfig
+public record PhotographyStoreConfig
 {
     [JsonPropertyName("FilmManufacturers")]
-    public IList<string>? FilmManufacturers { get; set; } = new List<string>();
+    public IList<string>? FilmManufacturers { get; init; } = new List<string>();
 
     [JsonPropertyName("EmulsiveFactoryServer")]
-    public string? EmulsiveFactoryServer { get; set; }
+    public string? EmulsiveFactoryServer { get; init; }
 }
