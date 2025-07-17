@@ -1,6 +1,5 @@
 using System.Net;
 using System.Text.Json.Serialization;
-using Consumer.PhotographyStore.ThirdParty.Models.Stock;
 
 namespace Consumer.PhotographyStore.ThirdParty.Services.Internal;
 

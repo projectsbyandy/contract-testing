@@ -1,5 +1,3 @@
-using Consumer.PhotographyStore.Contract.Tests.Models;
-using Consumer.PhotographyStore.Contract.Tests.PactHelper;
 using NUnit.Framework;
 
 namespace Consumer.PhotographyStore.Contract.Tests.ConsumerDriven;

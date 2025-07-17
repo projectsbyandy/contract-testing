@@ -40,7 +40,7 @@ public class PhotographyStoreStockTests : StockServiceFixture
         var contractPactPath = $"{_pactContractsFolder}{Path.DirectorySeparatorChar}FilmMuseum-StockServiceApi-Js-EmulsiveFactory-StockApi.json";
 
         // When / Then
-        using var pactVerifier = new PactVerifier("StockApi", _config);
+        using var pactVerifier = new PactVerifier("EmulsiveFactory-StockApi", _config);
         
         pactVerifier
             .WithHttpEndpoint(ServiceUri)
