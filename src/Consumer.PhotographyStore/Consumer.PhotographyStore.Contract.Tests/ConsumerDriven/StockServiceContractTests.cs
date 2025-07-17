@@ -6,8 +6,11 @@ using Consumer.PhotographyStore.Contract.Tests.Models;
 using Consumer.PhotographyStore.Contract.Tests.PactHelper;
 using Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 using Consumer.PhotographyStore.ThirdParty.Services.Internal;
+using Consumer.Support;
 using FluentAssertions;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
+using PactBroker.Models;
 using PactNet;
 using PactNet.Matchers;
 using HttpMethod = System.Net.Http.HttpMethod;
@@ -17,10 +20,12 @@ namespace Consumer.PhotographyStore.Contract.Tests.ConsumerDriven;
 public class StockServiceContractTests
 {
     private IPactBuilderV4? _pactBuilder;
-
+    private bool isBrokerEnabled;
     [SetUp]
     public void Setup()
     {
+        isBrokerEnabled = ConfigReader.GetConfigurationSection<BrokerConfiguration>("BrokerConfiguration").IsEnabled;
+        
         Environment.SetEnvironmentVariable("PACT_DO_NOT_TRACK", "true");
         var pact = Pact.V4("PhotographyShop-CSharp", "EmulsiveFactory-StockApi", new PactConfig()
         {
@@ -77,21 +82,38 @@ public class StockServiceContractTests
             });
             
             var response = await client.GetStockForAsync(filmName);
-            var filmsResponse = response.Result;
+
             // Then (NOTE we are verifying the mock data, these checks have no bearing on the data inside the generated Pact
             response.HttpStatusCode.Should().Be(HttpStatusCode.OK);
-            response.Result?.Film?.Id.Should().Be(Guid.Parse("2dfe8135-8835-4107-b0b1-cf110c3b13b9"));
-            response.Result?.Film?.Name.Should().Be(filmName);
-            response.Result?.Film?.Iso.Should().Be(400);
-            response.Result?.Film?.isActive.Should().BeTrue();
-            response.Result?.Film?.Manufacturer.Should().Be(new Manufacturer()
+            
+            response.Result.Should().NotBeNull();
+            
+            Assert.Multiple(() =>
             {
-                Name = "Kodak",
-                Location = "USA",
-                Date = DateOnly.FromDateTime(DateTime.Today)
+                response.Result?.Film?.Id.Should().Be(Guid.Parse("2dfe8135-8835-4107-b0b1-cf110c3b13b9"));
+                response.Result?.Film?.Name.Should().Be(filmName);
+                response.Result?.Film?.Iso.Should().Be(400);
+                response.Result?.Film?.isActive.Should().BeTrue();
+                response.Result?.Film?.Manufacturer.Should().Be(new Manufacturer()
+                {
+                    Name = "Kodak",
+                    Location = "USA",
+                    Date = DateOnly.FromDateTime(DateTime.Today)
+                });
+                response.Result?.Stock?.InStock.Should().BeGreaterThan(1);
+                response.Result?.Stock?.OnOrder.Should().Be(200);
             });
-            response.Result?.Stock?.InStock.Should().BeGreaterThan(1);
-            response.Result?.Stock?.OnOrder.Should().Be(200);
         })!;
+    }
+
+    [Test]
+    public void TestViaBroker()
+    {
+        if (!isBrokerEnabled)
+        {
+            Assert.Ignore("Broker is not enabled. Test Ignored");
+        }
+        
+        // TODO add test via broker
     }
 }

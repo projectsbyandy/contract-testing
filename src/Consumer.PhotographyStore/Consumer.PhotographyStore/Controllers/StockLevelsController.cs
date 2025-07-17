@@ -24,7 +24,7 @@ public class StockLevelsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> AllFilm()
+    public async Task<IActionResult> AllFilmAsync()
     {
         var filmStocks = new List<FilmStock?>();
 

@@ -21,7 +21,7 @@ Contract testing is a testing method that verifies compatibility between two sys
 
 ### Case Study
 
-A film factory wants to making changes to their film stock service
+A film factory wants to make changes to their film stock service
 
 | Timescale    | Activity                                                                   |
 | ------------ | -------------------------------------------------------------------------- |
@@ -40,6 +40,9 @@ A film factory wants to making changes to their film stock service
 ### Considerations
 - Contract testing works best when you have control over the Producer and Consumer
 - Will benefit APIs that change on a relatively frequent basis. If an API doesn't change the cost of setting up contract testing should be taken into consideration.
+- Tests need to be kept up-to-date and run regularly to make the most of contract testing.
+- Tests are relatively easy to write with a low barrier of entry.
+
 
 ## Project
 
@@ -59,7 +62,36 @@ This is an example of Contract Testing using Pact. Pact enables contracts to be 
 - Breaking contract change 3 - Additional business logic in service e.g. validation in service
 
 ### Broker
-In this example contracts are shared via common folder location. A more comprehensive solution would be to setup a dockerised broker from Pact-Foundations or use paid broker from smartbear.
+In this example, contracts are shared via common folder location. Some additional tests have been written that make use of a localised docker instance of the pact broker. 
+
+For tests in a development environment, it is recommended you integrate with a broker e.g. self hosted instance from Pact-Foundations or use paid broker from smartbear.
+
+A broker adds the ability to
+- centralise storage of contracts.
+- versioning of contracts and tracking of changes over time.
+- visualise relationships between provider and consumers.
+- tagging e.g. dev, test, production.
+- Enable automated deployment flows based on contract verification status.
+
+#### Local Pact Broker setup
+- Requires Docker and Docker Compose.
+  - if you have installed Docker desktop, docker compose should automatically installed.
+
+From the commandline
+- Navigate to the `/infrastructure/pact-broker` directory
+- If you are using a Mac with apple silicon architecture
+  - Open the `docker-compose.yml` file and uncomment out `#platform: linux/amd64`. As of writing there is not native ARM64 pact broker image.
+- Run `docker-compose up`
+- The default port for pact broker will be `9292`
+
+#### Broker tests
+By default the broker tests are turned off. 
+
+Once Pact Broker has been setup to enable
+- C# - the provider and consumer is feature flagged
+  - locate the `appsettings.json` in Consumer.PhotographyStore.Contract.Tests library, locate the BrokerConfiguration and set the isEnabled flag to `true`.
+- Javascript - TBC
+- Python - TBC
 
 ## Project Setup
 
@@ -74,7 +106,7 @@ In this example contracts are shared via common folder location. A more comprehe
 3. Open the solution in Visual Studio and Rebuild once more.
 4. Press Run button with Provider.EmulsiveFactory selected
 5. You will be prompted to create a certificate, proceed with creation
-6. The swagger page will sucessfully load.
+6. The swagger page will successfully load.
 7. Stop the process and navigate to Test Explorer, provider tests will be loaded.
 
 ### C# Consumer
@@ -95,7 +127,7 @@ via VSCode
 - open VS Command palette 
   - type Python Create environment
   - select `venv`
-  - select installed intepreter e.g. python 3.12
+  - select installed interpreter e.g. python 3.12
   - select `requirements.txt`
 - Navigate to the Test button of the left hand panel
   - Select Configure Python Test

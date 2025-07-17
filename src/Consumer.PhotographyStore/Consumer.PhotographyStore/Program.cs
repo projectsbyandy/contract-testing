@@ -2,6 +2,7 @@ using Ardalis.GuardClauses;
 using Consumer.PhotographyStore.Models;
 using Consumer.PhotographyStore.ThirdParty.Services;
 using Consumer.PhotographyStore.ThirdParty.Services.Internal;
+using Consumer.Support;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 // Load Config
 var photographyStoreConfig =
-    Guard.Against.Null(builder.Configuration.GetSection("PhotographyStoreConfig").Get<PhotographyStoreConfig>());
+    Guard.Against.Null(ConfigReader.GetConfigurationSection<PhotographyStoreConfig>("PhotographyStoreConfig"));
 
 builder.Services.AddSingleton(photographyStoreConfig);
 

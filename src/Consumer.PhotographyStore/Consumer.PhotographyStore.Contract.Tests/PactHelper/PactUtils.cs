@@ -1,6 +1,6 @@
 using System.IO;
 using Consumer.PhotographyStore.Contract.Tests.Models;
-using Consumer.PhotographyStore.Helpers;
+using Consumer.Support;
 
 namespace Consumer.PhotographyStore.Contract.Tests.PactHelper;
 

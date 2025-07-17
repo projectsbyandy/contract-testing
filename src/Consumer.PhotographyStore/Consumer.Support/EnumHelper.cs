@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Consumer.PhotographyStore.Helpers;
+namespace Consumer.Support;
 
 public static class EnumHelper
 {
