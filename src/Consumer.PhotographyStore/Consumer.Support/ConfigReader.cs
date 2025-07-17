@@ -4,6 +4,7 @@ namespace Consumer.Support;
 
 public class ConfigReader
 {
+    private static IConfiguration? _configuration;
     public static T GetConfiguration<T>() where T : new()
     {
         var configuration = GetConfiguration();
@@ -24,7 +25,7 @@ public class ConfigReader
     {
         var env = Environment.GetEnvironmentVariable("ENVIRONMENTINTEST") ?? "development";
 
-        return new ConfigurationBuilder()
+        return _configuration ??= new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
             .AddJsonFile($"appsettings.{env}.json", optional: true, reloadOnChange: false)
             .AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: false)
