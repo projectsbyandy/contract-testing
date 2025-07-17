@@ -9,12 +9,11 @@
 
     <ItemGroup>
         <PackageReference Include="Ardalis.GuardClauses" Version="5.0.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
         <PackageReference Include="System.Net.Http" Version="4.3.4" />
     </ItemGroup>
-
     <ItemGroup>
-        <InternalsVisibleTo Include ="Consumer.Photographystore.Tests"/>
+        <InternalsVisibleTo Include="Consumer.Photographystore.Tests" />
     </ItemGroup>
     
     <ItemGroup>
@@ -24,7 +23,7 @@
     </ItemGroup>
     
     <ItemGroup>
-      <ProjectReference Include="..\Consumer.Support\Consumer.Support.csproj" />
+      <ProjectReference Include="..\..\CommonCSharp\CommonCSharp.csproj" />
     </ItemGroup>
 
 </Project>

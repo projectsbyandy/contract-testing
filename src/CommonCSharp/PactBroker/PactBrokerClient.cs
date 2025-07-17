@@ -1,16 +1,17 @@
 using System.Text;
 using System.Text.Json;
-using Ardalis.GuardClauses;
-using Consumer.Support;
+using CommonCSharp.Models;
 using PactBroker.Models;
 
-namespace PactBroker.Services;
+namespace CommonCSharp.PactBroker;
 
 public class PactBrokerClient
 { 
     public static async Task PublicContractsAsync(PublishContractRequest publishContractRequest)
     {
-        var brokerServer = Guard.Against.Null(ConfigReader.GetConfigurationSection<BrokerConfiguration>("BrokerConfiguration").Server);
+        var brokerServer = ConfigReader.GetConfigurationSection<BrokerConfiguration>("BrokerConfiguration").Server;
+        
+        ArgumentException.ThrowIfNullOrEmpty(brokerServer);
 
         using var client = new HttpClient() { BaseAddress = new Uri(brokerServer) };
         var response = await client.PostAsync("contracts/publish", new StringContent(

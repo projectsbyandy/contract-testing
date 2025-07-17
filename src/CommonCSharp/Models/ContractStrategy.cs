@@ -1,4 +1,4 @@
-namespace Provider.EmulsiveFactory.Contract.Tests.Models;
+namespace CommonCSharp.Models;
 
 public enum ContractStrategy
 {

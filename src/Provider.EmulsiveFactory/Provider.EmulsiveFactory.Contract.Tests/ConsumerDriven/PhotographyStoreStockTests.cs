@@ -1,7 +1,7 @@
+using CommonCSharp.Models;
 using PactNet.Verifier;
 using Provider.EmulsiveFactory.Contract.Tests.Fixtures;
 using Provider.EmulsiveFactory.Contract.Tests.Helpers;
-using Provider.EmulsiveFactory.Contract.Tests.Models;
 
 namespace Provider.EmulsiveFactory.Contract.Tests.ConsumerDriven;
 
@@ -64,4 +64,6 @@ public class PhotographyStoreStockTests : StockServiceFixture
             .WithCustomHeader("Content-Type", "application/json; charset=utf-8")
             .Verify();
     }
+    
+    //TODO: Add verification tests that use pact broker
 }

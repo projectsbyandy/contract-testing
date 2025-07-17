@@ -25,6 +25,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Provider.EmulsiveFactory\Provider.EmulsiveFactory.csproj" />
+      <ProjectReference Include="..\..\CommonCSharp\CommonCSharp.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 using System.IO;
-using Consumer.PhotographyStore.Contract.Tests.Models;
-using Consumer.Support;
+using CommonCSharp;
+using CommonCSharp.Models;
 
 namespace Consumer.PhotographyStore.Contract.Tests.PactHelper;
 
@@ -21,7 +21,7 @@ public class PactUtils
         var location =
             $"{Directory.GetParent(Directory.GetCurrentDirectory())?.Parent?.Parent?.Parent?.Parent}{Path.DirectorySeparatorChar}SharedPactContracts{Path.DirectorySeparatorChar}{contractStrategy.GetDescription()}";
         Directory.CreateDirectory(location);
-
+    
         return location;
     }
 }

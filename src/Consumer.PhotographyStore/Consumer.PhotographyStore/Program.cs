@@ -1,8 +1,8 @@
 using Ardalis.GuardClauses;
+using CommonCSharp;
 using Consumer.PhotographyStore.Models;
 using Consumer.PhotographyStore.ThirdParty.Services;
 using Consumer.PhotographyStore.ThirdParty.Services.Internal;
-using Consumer.Support;
 
 var builder = WebApplication.CreateBuilder(args);
 

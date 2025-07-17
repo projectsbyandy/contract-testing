@@ -56,6 +56,8 @@ This is an example of Contract Testing using Pact. Pact enables contracts to be 
 | Consumer B   | Film Museum           | JS / TS  |
 | Consumer C   | Film Developer        | Python   |
 
+There is also a CommonCSharp library which contains the PactBroker client / configuration and Config reader used across all dotnet solutions.
+
 ### Provider example of breaking contract changes
 - Breaking contract change 1 - Delete a property
 - Breaking contract change 2 - Change in property type
@@ -89,7 +91,7 @@ By default the broker tests are turned off.
 
 Once Pact Broker has been setup to enable
 - C# - the provider and consumer is feature flagged
-  - locate the `appsettings.json` in Consumer.PhotographyStore.Contract.Tests library, locate the BrokerConfiguration and set the isEnabled flag to `true`.
+  - locate the `appsettings.json` in CommonCSharp library, in the BrokerConfiguration section set the isEnabled flag to `true`.
 - Javascript - TBC
 - Python - TBC
 

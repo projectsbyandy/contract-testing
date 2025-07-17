@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Provider.EmulsiveFactory.Helpers;
+namespace CommonCSharp;
 
 public static class EnumHelper
 {

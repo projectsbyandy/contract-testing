@@ -2,15 +2,13 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Consumer.PhotographyStore.Contract.Tests.Models;
+using CommonCSharp;
+using CommonCSharp.Models;
 using Consumer.PhotographyStore.Contract.Tests.PactHelper;
 using Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 using Consumer.PhotographyStore.ThirdParty.Services.Internal;
-using Consumer.Support;
 using FluentAssertions;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
-using PactBroker.Models;
 using PactNet;
 using PactNet.Matchers;
 using HttpMethod = System.Net.Http.HttpMethod;
@@ -21,6 +19,7 @@ public class StockServiceContractTests
 {
     private IPactBuilderV4? _pactBuilder;
     private bool isBrokerEnabled;
+    
     [SetUp]
     public void Setup()
     {
@@ -29,7 +28,7 @@ public class StockServiceContractTests
         Environment.SetEnvironmentVariable("PACT_DO_NOT_TRACK", "true");
         var pact = Pact.V4("PhotographyShop-CSharp", "EmulsiveFactory-StockApi", new PactConfig()
         {
-            PactDir = PactUtils.ContractsLocation(ContractStrategy.Consumer)
+            PactDir = PactUtils.ContractsLocation(ContractStrategy.ConsumerDriven)
         });
         _pactBuilder = pact.WithHttpInteractions();
     }

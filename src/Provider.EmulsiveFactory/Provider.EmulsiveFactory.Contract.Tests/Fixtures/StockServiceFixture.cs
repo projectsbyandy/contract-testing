@@ -1,5 +1,9 @@
+using Ardalis.GuardClauses;
+using CommonCSharp;
+using CommonCSharp.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
+using Provider.EmulsiveFactory.Contract.Tests.Models;
 
 namespace Provider.EmulsiveFactory.Contract.Tests.Fixtures;
 
@@ -8,11 +12,14 @@ public class StockServiceFixture : IDisposable
 {
     private IHost? _server;
     protected Uri? ServiceUri { get; private set; }
+    protected bool IsBrokerEnabled { get; private set; }
 
+    
     [OneTimeSetUp]
     public void SetupStockServiceFixture()
     {
-        ServiceUri = new Uri("https://localhost:7194");
+        ServiceUri = new Uri(Guard.Against.Null(ConfigReader.GetConfigurationSection<ProviderConfig>("provider").ServiceUrl));
+        IsBrokerEnabled = ConfigReader.GetConfigurationSection<BrokerConfiguration>("BrokerConfiguration").IsEnabled;
 
         var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
         {

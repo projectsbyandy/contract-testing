@@ -17,16 +17,12 @@
         <PackageReference Include="coverlet.collector" Version="3.1.2"/>
         <PackageReference Include="PactNet" Version="5.0.1" />
     </ItemGroup>
-
+    <ItemGroup>
+        <ProjectReference Include="..\..\CommonCSharp\CommonCSharp.csproj" />
+    </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Consumer.PhotographyStore\Consumer.PhotographyStore.csproj" />
       <ProjectReference Include="..\PactBroker\PactBroker.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Update="appsettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
     </ItemGroup>
 
 </Project>

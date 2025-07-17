@@ -1,4 +1,4 @@
-namespace PactBroker.Models;
+namespace CommonCSharp.Models;
 
 public record BrokerConfiguration
 {
