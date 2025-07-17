@@ -64,22 +64,24 @@ In this example contracts are shared via common folder location. A more comprehe
 ## Project Setup
 
 ### Pre-requisite
-- .NET8
+- .NET8 or later
 - node and npm
 - python 3.12+
 
 ### C# Provider
-1. Navigate to `Contract-Testing\src\Provider.EmulsiveFactory`
-2. Rebuild solution
-2. Press Run button with Provider.EmulsiveFactory selected
-3. You will be prompted to create a certificate, proceed with creation
-4. The swagger page will sucessfully load.
-5. Stop the process and navigate to Test Explorer, provider tests will be loaded.
+1. In PS navigate to `Contract-Testing\src\Provider.EmulsiveFactory`
+2. Run `dotnet build`. The solution should build without error.
+3. Open the solution in Visual Studio and Rebuild once more.
+4. Press Run button with Provider.EmulsiveFactory selected
+5. You will be prompted to create a certificate, proceed with creation
+6. The swagger page will sucessfully load.
+7. Stop the process and navigate to Test Explorer, provider tests will be loaded.
 
 ### C# Consumer
-1. Navigate to `Contract-Testing\src\Provider.Consumer.PhotographyStore`
-2. Repeat steps 2 onwards from Provider.
-3. Navigate to Test Explorer, consumer tests will be loaded.
+1. In PS navigate `Contract-Testing\src\Provider.Consumer.PhotographyStore`
+2. Run `dotnet build`. The solution should build without error.
+3. Repeat steps 3 onwards from Provider.
+4. Navigate to Test Explorer, consumer tests will be loaded.
 
 ### Python Consumer
 via Pycharm
@@ -105,8 +107,10 @@ via VSCode
 ### Javascript Consumer
 via VSCode
 - In powershell navigate to `Contract-Testing\src\ConsumerJs.FilmMuseum`
-- Run npm install
+- Run `npm install`
+  - if there are any dependency failures please run `npm install --legacy-per-dep`
 - Open in VS code from this folder
+- Open extensions, search for `Jest` and install the extension called Jest.
 - Navigate to the Testing area on the left hand panel
 - Examine the Testing area and they should have successfully populated
 
