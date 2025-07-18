@@ -43,7 +43,6 @@ A film factory wants to make changes to their film stock service
 - Tests need to be kept up-to-date and run regularly to make the most of contract testing.
 - Tests are relatively easy to write with a low barrier of entry.
 
-
 ## Project
 
 This is an example of Contract Testing using Pact. Pact enables contracts to be developed with Consumer and Provider language agnostic tests as long as the contract aligns with a specific Pact schema version.
@@ -142,7 +141,6 @@ via VSCode
 via VSCode
 - In powershell navigate to `Contract-Testing\src\ConsumerJs.FilmMuseum`
 - Run `npm install`
-  - if there are any dependency failures please run `npm install --legacy-per-dep`
 - Open in VS code from this folder
 - Open extensions, search for `Jest` and install the extension called Jest.
 - Navigate to the Testing area on the left hand panel
