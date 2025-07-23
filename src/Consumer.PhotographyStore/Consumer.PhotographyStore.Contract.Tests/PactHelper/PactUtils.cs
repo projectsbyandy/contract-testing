@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using CommonCSharp;
 using CommonCSharp.Models;
@@ -23,5 +24,13 @@ public class PactUtils
         Directory.CreateDirectory(location);
     
         return location;
+    }
+    
+    public static string ReadFileAndEncode(string path) 
+    {
+        var bytes = File.ReadAllBytes(path);
+        var encodedFile = Convert.ToBase64String(bytes);
+
+        return encodedFile;
     }
 }

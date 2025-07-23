@@ -1,4 +1,6 @@
+using CommonCSharp;
 using CommonCSharp.Models;
+using CommonCSharp.PactBroker;
 using PactNet.Verifier;
 using Provider.EmulsiveFactory.Contract.Tests.Fixtures;
 using Provider.EmulsiveFactory.Contract.Tests.Helpers;
@@ -64,6 +66,31 @@ public class PhotographyStoreStockTests : StockServiceFixture
             .WithCustomHeader("Content-Type", "application/json; charset=utf-8")
             .Verify();
     }
-    
-    //TODO: Add verification tests that use pact broker
+
+    [TestCase("developerservice-python", Ignore="Python consumer not configured to broker")]
+    [TestCase("FilmMuseum-StockServiceApi-Js", Ignore ="Javascript consumer not configured to broker")]
+    [TestCase("PhotographyShop-CSharp")]
+    public void Verify_Consumer_Alignment_With_Broker_EmulsiveFactory_StockApi(string consumerName)
+    {
+        if (!IsBrokerEnabled)
+            Assert.Ignore("Broker is not enabled. Test Ignored");
+        
+        // Given
+        using var pactVerifier = new PactVerifier("EmulsiveFactory-StockApi", _config);
+        
+        // When / Then
+        pactVerifier
+            .WithHttpEndpoint(ServiceUri)
+            .WithPactBrokerSource(new Uri(PactBrokerClient.Endpoint), options =>
+            {
+                options.ProviderBranch("main");
+                options.ConsumerVersionSelectors(new ConsumerVersionSelector()
+                {
+                    Consumer = consumerName,
+                    Latest = true
+                });
+                options.PublishResults("main");
+            })
+            .Verify();
+    }
 }

@@ -1,10 +1,13 @@
 using System;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using CommonCSharp;
 using CommonCSharp.Models;
+using CommonCSharp.PactBroker;
+using CommonCSharp.PactBroker.Models;
 using Consumer.PhotographyStore.Contract.Tests.PactHelper;
 using Consumer.PhotographyStore.ThirdParty.Models.EmulsiveFactory;
 using Consumer.PhotographyStore.ThirdParty.Services.Internal;
@@ -21,6 +24,8 @@ public class StockServiceContractTests
     private IPactBuilderV4 _pactBuilder;
     private bool _isBrokerEnabled;
     private const string FilmName = "Portra400";
+    private const string ConsumerName = "PhotographyShop-CSharp";
+    private const string ProviderName = "EmulsiveFactory-StockApi";
     
     [SetUp]
     public void Setup()
@@ -28,7 +33,7 @@ public class StockServiceContractTests
         _isBrokerEnabled = ConfigReader.GetConfigurationSection<BrokerConfiguration>("BrokerConfiguration").IsEnabled;
         
         Environment.SetEnvironmentVariable("PACT_DO_NOT_TRACK", "true");
-        var pact = Pact.V4("PhotographyShop-CSharp", "EmulsiveFactory-StockApi", new PactConfig()
+        var pact = Pact.V4(ConsumerName, ProviderName, new PactConfig()
         {
             PactDir = PactUtils.ContractsLocation(ContractStrategy.ConsumerDriven)
         });
@@ -107,46 +112,31 @@ public class StockServiceContractTests
     }
 
     [Test]
-    public void TestViaBroker()
+    public async Task TestViaBroker()
     {
         if (!_isBrokerEnabled)
-        {
-            _pactBuilder?
-                .UponReceiving("A request for a film is received")
-                .Given("an Stock request is made with a film name")
-                .WithRequest(HttpMethod.Get, $"/Stock/{FilmName}")
-                .WillRespond()
-                .WithStatus(HttpStatusCode.OK)
-                .WithHeader("Content-Type", "application/json; charset=utf-8")
-                .WithJsonBody(new
-                {
-                    httpStatusCode = Match.Type(200),
-                    result = new
-                    {
-                        film = new 
-                        {
-                            id = Match.Type(Guid.Parse("2dfe8135-8835-4107-b0b1-cf110c3b13b9")),
-                            name = Match.Type(FilmName),
-                            filmType = Match.Type(FilmType.ThirtyFive),
-                            iso = Match.Number(400),
-                            isActive = Match.Type(true),
-                            manufacturer = new {
-                                name = Match.Type("Kodak"),
-                                location = Match.Type("USA"),
-                                date = Match.Type(DateOnly.FromDateTime(DateTime.Today)),
-                            }
-                        },
-                        stock = new
-                        {
-                            inStock = Match.Number(100),
-                            onOrder = Match.Number(200)
-                        }
-                    }
-                });
-            
             Assert.Ignore("Broker is not enabled. Test Ignored");
-        }
-        
-        // TODO add test via broker
+
+        await StockService_Verify_Response_With_Type_Check();
+
+        await PactBrokerClient.PublicContractsAsync(new PublishContractRequest()
+        {
+            PacticipantName = "PhotographyShop-CSharp",
+            PacticipantVersion = "1",
+            Branch = "main",
+            Tags = ["main", "local"],
+            BuildUrl = "http://dev.pipeline.com/2",
+            Contracts = new[]
+            {
+                new ContractDetails()
+                {
+                    ConsumerName = "PhotographyShop-CSharp",
+                    ProviderName = "EmulsiveFactory-StockApi",
+                    ContentType = "application/json",
+                    Specification = "pact",
+                    Content = PactUtils.ReadFileAndEncode($"{PactUtils.ContractsLocation(ContractStrategy.ConsumerDriven) + Path.DirectorySeparatorChar + ConsumerName}-{ProviderName}.json")
+                }
+            }
+        });
     }
 }

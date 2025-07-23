@@ -22,10 +22,11 @@
         </PackageReference>
         <PackageReference Include="PactNet" Version="5.0.1" />
     </ItemGroup>
-
+    <ItemGroup>
+        <ProjectReference Include="..\..\CommonCSharp\CommonCSharp.csproj" />
+    </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Provider.EmulsiveFactory\Provider.EmulsiveFactory.csproj" />
-      <ProjectReference Include="..\..\CommonCSharp\CommonCSharp.csproj" />
     </ItemGroup>
 
     <ItemGroup>
