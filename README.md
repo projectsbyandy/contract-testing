@@ -80,10 +80,22 @@ A broker adds the ability to
 
 From the commandline
 - Navigate to the `/infrastructure/pact-broker` directory
-- If you are using a Mac with apple silicon architecture
-  - Open the `docker-compose.yml` file and uncomment out `#platform: linux/amd64`. As of writing there is not native ARM64 pact broker image.
+- If you are using Windows
+  - Open the `docker-compose.yml` file and uncomment out `platform: linux/amd64`. 
+  - Included for Mac usage as at the time of writing there is no native ARM64 pact broker image.
+- Generate certificates
+  - Navigate to `/infrastructure`
+  - *Linux/macOS*
+    ```
+    bashchmod +x generate-ssl.sh
+    ./generate-ssl.sh
+    ```
+  - *Windows (powershell but provides different options on cert generation)*
+    ``` 
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser .\generate-ssl.ps1
+    ```
 - Run `docker-compose up`
-- The default port for pact broker will be `9292`
+- Access the broker via the default port for pact broker will be `9292`
 
 #### Broker tests
 By default the broker tests are turned off. 

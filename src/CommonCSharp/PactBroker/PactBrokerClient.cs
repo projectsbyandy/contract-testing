@@ -1,7 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using CommonCSharp.Models;
-using PactBroker.Models;
+using CommonCSharp.PactBroker.Models;
 
 namespace CommonCSharp.PactBroker;
 
@@ -13,7 +13,9 @@ public class PactBrokerClient
         
         ArgumentException.ThrowIfNullOrEmpty(brokerServer);
 
-        using var client = new HttpClient() { BaseAddress = new Uri(brokerServer) };
+        using var client = new HttpClient();
+        client.BaseAddress = new Uri(brokerServer);
+        
         var response = await client.PostAsync("contracts/publish", new StringContent(
             JsonSerializer.Serialize(publishContractRequest), Encoding.UTF8, "application/json"));
         

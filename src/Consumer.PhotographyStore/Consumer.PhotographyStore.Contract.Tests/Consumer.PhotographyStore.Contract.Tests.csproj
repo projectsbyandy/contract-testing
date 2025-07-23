@@ -22,7 +22,6 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Consumer.PhotographyStore\Consumer.PhotographyStore.csproj" />
-      <ProjectReference Include="..\PactBroker\PactBroker.csproj" />
     </ItemGroup>
 
 </Project>

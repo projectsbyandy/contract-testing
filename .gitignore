@@ -404,3 +404,13 @@ FodyWeavers.xsd
 
 # Contract testing specific
 SharedPactContracts/
+
+
+# SSL certificates (generated locally)
+ssl/*.crt
+ssl/*.key
+ssl/*.pem
+
+# But allow the config and generation script
+!ssl/nginx.conf
+!generate-ssl.sh
