@@ -102,7 +102,7 @@ By default the broker tests are turned off.
 
 Once Pact Broker has been setup to enable
 - C# - the provider and consumer is feature flagged
-  - locate the `appsettings.json` in CommonCSharp library, in the BrokerConfiguration section set the isEnabled flag to `true`.
+  - locate the `appsettings-broker.json` in CommonCSharp library, in the BrokerConfiguration section set the isEnabled flag to `true`.
 - Javascript - TBC
 - Python - TBC
 
