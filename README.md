@@ -55,7 +55,7 @@ This is an example of Contract Testing using Pact. Pact enables contracts to be 
 | Consumer B   | Film Museum           | JS / TS  |
 | Consumer C   | Film Developer        | Python   |
 
-There is also a CommonCSharp library which contains the PactBroker client / configuration and Config reader used across all dotnet solutions.
+There is also a CommonCSharp library which contains the PactBroker client / configuration and Config reader in the `Shared` folder for each C# solution but the code outside of the solutions in a common library.
 
 ### Provider example of breaking contract changes
 - Breaking contract change 1 - Delete a property

@@ -8,6 +8,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8AD0E514
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Provider.EmulsiveFactory.Contract.Tests", "Provider.EmulsiveFactory.Contract.Tests\Provider.EmulsiveFactory.Contract.Tests.csproj", "{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{36FAD62F-2B82-4A4A-998A-146CEB433D3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonCSharp", "..\CommonCSharp\CommonCSharp.csproj", "{D2F0B485-79F7-46E2-B8CC-5378ECDFBE8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,9 +26,14 @@ Global
 		{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2F0B485-79F7-46E2-B8CC-5378ECDFBE8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2F0B485-79F7-46E2-B8CC-5378ECDFBE8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2F0B485-79F7-46E2-B8CC-5378ECDFBE8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2F0B485-79F7-46E2-B8CC-5378ECDFBE8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2AF49DA1-A19A-48C1-A9A3-8870E447085C} = {E13B94B9-402A-43A0-BC21-8EDC17B73FF6}
 		{4BA394A9-4F20-40A2-996C-3BB7B0CFBEC5} = {8AD0E514-4662-4DEB-BA84-C18AFA70439A}
+		{D2F0B485-79F7-46E2-B8CC-5378ECDFBE8B} = {36FAD62F-2B82-4A4A-998A-146CEB433D3A}
 	EndGlobalSection
 EndGlobal
