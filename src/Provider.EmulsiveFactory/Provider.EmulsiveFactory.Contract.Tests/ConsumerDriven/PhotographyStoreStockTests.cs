@@ -1,6 +1,7 @@
-using CommonCSharp;
 using CommonCSharp.Models;
 using CommonCSharp.PactBroker;
+using PactNet;
+using PactNet.Infrastructure.Outputters;
 using PactNet.Verifier;
 using Provider.EmulsiveFactory.Contract.Tests.Fixtures;
 using Provider.EmulsiveFactory.Contract.Tests.Helpers;
@@ -16,7 +17,13 @@ public class PhotographyStoreStockTests : StockServiceFixture
     public void Setup()
     {
         Environment.SetEnvironmentVariable("PACT_DO_NOT_TRACK", "true");
-        _config = new PactVerifierConfig();
+        _config = new PactVerifierConfig() {
+            Outputters = new List<IOutput>
+            {
+                new ConsoleOutput()
+            },
+            LogLevel = PactLogLevel.Information
+        };
     }
     
     [Test(Description = "Consumer Driven Contract Test. Generated from Photography Store")]

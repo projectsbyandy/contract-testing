@@ -13,5 +13,5 @@ public record Manufacturer
     public string? Location { get; init; }
     
     [JsonPropertyName("date")]
-    public DateOnly Date { get; init; }
+    public required DateOnly Date { get; init; }
 }

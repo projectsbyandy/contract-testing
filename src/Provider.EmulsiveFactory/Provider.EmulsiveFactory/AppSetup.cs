@@ -15,16 +15,15 @@ internal static class AppSetup
         builder.Services.AddSingleton<IFilmStockRepo, FakeFilmStockRepo>();
         
         // Logging
-        Log.Logger =  new LoggerConfiguration()
-            .WriteTo.Console().CreateBootstrapLogger();
-        Log.Information("Staring up logging");
-        
         builder.Services.Configure<ConsoleLifetimeOptions>(options =>  // configure the options
             options.SuppressStatusMessages = true);
-        
-        builder.Host.UseSerilog((context, logConfig) => logConfig
-            .WriteTo.Console()
-            .ReadFrom.Configuration(context.Configuration));
+
+        builder.Services.AddSerilog(configuration =>
+        {
+            configuration
+                .WriteTo.Console()
+                .MinimumLevel.Debug();
+        });
     }
 
     public static void ConfigureApp(WebApplication app)

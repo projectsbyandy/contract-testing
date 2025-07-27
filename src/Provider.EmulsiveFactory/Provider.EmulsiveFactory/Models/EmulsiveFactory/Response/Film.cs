@@ -21,6 +21,8 @@ public record Film
     [JsonPropertyName("iso")]
     public int Iso { get; init; }
     
+    // Breaking contract change 5 - renaming of expected field
+    // [JsonPropertyName("is_active")]
     [JsonPropertyName("isActive")]
     public bool isActive { get; init; }
     

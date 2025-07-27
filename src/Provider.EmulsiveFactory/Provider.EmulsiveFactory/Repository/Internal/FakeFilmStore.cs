@@ -102,7 +102,8 @@ public class FakeFilmStore : IFilmStore
                 Manufacturer = new Manufacturer()
                 {
                     Name = "Kodak",
-                    Location = "USA"
+                    Location = "USA",
+                    Date = DateOnly.FromDateTime(DateTime.Today - TimeSpan.FromDays(10))
                 },
                 Contacts = new List<Person>()
                 {
@@ -111,7 +112,6 @@ public class FakeFilmStore : IFilmStore
                         Name = "David",
                         Location = "Oregan",
                         Email = "David@lucky.com"
-
                     },
                     new()
                     {
@@ -180,7 +180,7 @@ public class FakeFilmStore : IFilmStore
                         Name = "Modern"
                     }
                 }
-            },
+            }
         };
     }
 }
