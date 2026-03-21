@@ -1,11 +1,13 @@
 {
   "devDependencies": {
-    "@pact-foundation/pact": "^15.0.1",
+    "@pact-foundation/pact": "^16.3.0",
     "@types/express": "^4.17.21",
-    "@types/jest": "^29.5.12",
+    "@types/jest": "^30.0.0",
     "@types/supertest": "6.0.2",
-    "jest-pact": "^0.11.4",
+    "jest": "^30.3.0",
+    "jest-pact": "^0.13.0",
     "nodemon": "^3.1.4",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.5.4"
   },
   "scripts": {
@@ -16,9 +18,7 @@
   },
   "dependencies": {
     "express": "^4.19.2",
-    "jest": "^30.0.4",
     "supertest": "7.0.0",
-    "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2"
   }
 }

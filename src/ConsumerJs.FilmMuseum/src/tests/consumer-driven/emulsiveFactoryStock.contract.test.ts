@@ -1,5 +1,6 @@
 import path from "path";
 import { PactV4, Matchers } from "@pact-foundation/pact";
+import * as MatchersV3 from "@pact-foundation/pact/src/v3/matchers";
 import {expect, test} from '@jest/globals';
 import { IStockService, StockService } from "../../service";
 import { eachLike } from "@pact-foundation/pact/src/dsl/matchers";
@@ -17,7 +18,7 @@ const EMULSIVE_FILM_RESPONSE = {
             },
             "contacts": eachLike({
                 "name": Matchers.string("Andy-bob"),
-                "email": Matchers.email("Andy@test.com"),
+                "email": MatchersV3.regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", "Andy@test.com"),
                 "location": Matchers.string("Italy")
             }),
             "tags": eachLike({

@@ -414,3 +414,5 @@ ssl/*.pem
 # But allow the config and generation script
 !ssl/nginx.conf
 !generate-ssl.sh
+
+dist/

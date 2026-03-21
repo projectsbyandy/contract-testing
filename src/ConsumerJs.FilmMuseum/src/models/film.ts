@@ -1,5 +1,5 @@
 import { FilmType } from "./FilmType";
-import { Manufacturer } from "./Manufacturer";
+import { Manufacturer } from ".";
 import { Person } from "./Person";
 import { Tag } from "./Tag";
 
