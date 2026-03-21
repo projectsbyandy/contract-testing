@@ -3,12 +3,12 @@ using CommonCSharp;
 using Consumer.PhotographyStore.Models;
 using Consumer.PhotographyStore.ThirdParty.Services;
 using Consumer.PhotographyStore.ThirdParty.Services.Internal;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApi();
 
 // Load Config
 var photographyStoreConfig =
@@ -32,8 +32,8 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();

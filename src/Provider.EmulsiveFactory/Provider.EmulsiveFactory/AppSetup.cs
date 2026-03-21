@@ -1,5 +1,6 @@
 using Provider.EmulsiveFactory.Repository;
 using Provider.EmulsiveFactory.Repository.Internal;
+using Scalar.AspNetCore;
 using Serilog;
 
 namespace Provider.EmulsiveFactory;
@@ -9,13 +10,12 @@ internal static class AppSetup
     public static void ConfigureBuilder(WebApplicationBuilder builder)
     {
         builder.Services.AddControllers();
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddOpenApi();
         builder.Services.AddSingleton<IFilmStore, FakeFilmStore>();
         builder.Services.AddSingleton<IFilmStockRepo, FakeFilmStockRepo>();
         
         // Logging
-        builder.Services.Configure<ConsoleLifetimeOptions>(options =>  // configure the options
+        builder.Services.Configure<ConsoleLifetimeOptions>(options =>
             options.SuppressStatusMessages = true);
 
         builder.Services.AddSerilog(configuration =>
@@ -30,8 +30,8 @@ internal static class AppSetup
     {
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            app.MapOpenApi();
+            app.MapScalarApiReference();
         }
 
         app.MapControllers();

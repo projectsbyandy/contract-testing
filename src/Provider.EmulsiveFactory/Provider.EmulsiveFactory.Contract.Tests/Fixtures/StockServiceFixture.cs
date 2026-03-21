@@ -8,7 +8,7 @@ using Provider.EmulsiveFactory.Contract.Tests.Models;
 namespace Provider.EmulsiveFactory.Contract.Tests.Fixtures;
 
 [TestFixture]
-public class StockServiceFixture : IDisposable
+public abstract class StockServiceFixture : IDisposable
 {
     private IHost? _server;
     protected Uri? ServiceUri { get; private set; }

@@ -20,8 +20,8 @@ public class StockServiceTests
         var filmStockDetails = await stockService.GetStockForAsync("CT800");
         
         // Then
-        filmStockDetails.Result?.Stock?.InStock.Should().BeGreaterOrEqualTo(0);
-        filmStockDetails.Result?.Stock?.OnOrder.Should().BeGreaterOrEqualTo(0);
+        filmStockDetails.Result?.Stock?.InStock.Should().BeGreaterThanOrEqualTo(0);
+        filmStockDetails.Result?.Stock?.OnOrder.Should().BeGreaterThanOrEqualTo(0);
         filmStockDetails.Result?.Film?.Name.Should().Be("CT800");
         filmStockDetails.Result?.Film?.Manufacturer?.Name.Should().Be("Cinestill");
     }
