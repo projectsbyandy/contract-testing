@@ -1,7 +1,7 @@
 import path from "path";
 import { PactV4, Matchers } from "@pact-foundation/pact";
 import * as MatchersV3 from "@pact-foundation/pact/src/v3/matchers";
-import {expect, test} from '@jest/globals';
+import {beforeAll, describe, expect, test} from '@jest/globals';
 import { IStockService, StockService } from "../../service";
 import { eachLike } from "@pact-foundation/pact/src/dsl/matchers";
 
